@@ -13,10 +13,13 @@
 - ...
 
 
-### React
+### React Unity WebGL
 1. ...
-2. 
+2. Install npm
 3. ...
+4. Install react-unity-webgl
+5. Install bootstrap
+6. ...
 
 
 ### Building the Application
