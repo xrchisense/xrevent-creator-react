@@ -8,18 +8,19 @@
 
 ## Installation (Developer Toolchain)
 
-### System requirements
-- ...
-- ...
+### Requirements
+- Node.js
+- npm
+- react-unity-webgl
+- react-bootstrap
 
 
 ### React Unity WebGL
-1. ...
-2. Install npm
-3. ...
-4. Install react-unity-webgl
-5. Install bootstrap
-6. ...
+1. Download Node.js (LTS) from https://nodejs.org/en/ and install.
+2. The Installer will also install npm (Node Package Manager) that helps to install packages.
+3. Clone the repository to your local disk.
+4. Switch to the project root and type 'npm i' to initialize the project. This will download the missing modules used in the project. For example it will download 'react-unity-webgl' and 'react-bootstrap' as those are modules used by the project.
+6. The project should be good to go. Copy the current Unity WebGL build to the public folder and try 'npm start'.
 
 
 ### Building the Application
