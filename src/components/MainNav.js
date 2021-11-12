@@ -3,6 +3,8 @@ import Nav from "react-bootstrap/Nav";
 import Stack from "react-bootstrap/Stack";
 import Accordion from "react-bootstrap/Accordion";
 
+import AccMenu from "./AccMenu";
+
 const MainNav = () => {
     return (
         <>
@@ -54,7 +56,11 @@ const MainNav = () => {
                     </Accordion.Body>
                 </Accordion.Item>
                 </Accordion>
+
+                
+                <AccMenu/>
             </div>
+            
             </Stack>
         </>
     )
