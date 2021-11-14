@@ -18,6 +18,7 @@ function UploadButton() {
             body: formData
         });
         alert('The file has been uploaded successfully.');
+        
     }
 
     return (

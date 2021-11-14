@@ -14,16 +14,13 @@ const unityContext = new UnityContext({
 });
 
 
-
-
-
 function App() {
 	return (
 		<>
 			<TopNav />
 
 			<Stack direction="horizontal" gap={3} >
-			<div className="" ><MainNav /></div>
+			<div className="" ><MainNav unityContext = {unityContext}></MainNav></div>
 			<div className="bg-light border vh-100" ><Unity className="Unity" unityContext={unityContext} /></div>
 			<div className="bg-light border vh-100 ms-auto">Third item</div>
 			</Stack>

@@ -5,6 +5,8 @@ import Card from "react-bootstrap/Card";
 import { useContext } from "react";
 import { Form } from "react-bootstrap";
 import UploadButton from "./UploadButton";
+import DefaultItem from "./DefaultItem";
+import { UnityContext } from "react-unity-webgl";
 
 
 
@@ -29,7 +31,7 @@ function ContextAwareToggle({ children, eventKey, callback }) {
     );
 }
 
-function AccMenu() {
+function AccMenu({unityContext}) {
     
     async function uploadFile(){								
         	          
@@ -53,7 +55,9 @@ function AccMenu() {
                     <UploadButton/>                
                 </Card.Header>
                 <Accordion.Collapse eventKey="1">
-                    <Card.Body>Hello! I'm another body</Card.Body>
+                    <Card.Body>
+                        <DefaultItem type= "Cube" unityContext ={unityContext}></DefaultItem>
+                    </Card.Body>
                 </Accordion.Collapse>
             </Card>
         </Accordion>
