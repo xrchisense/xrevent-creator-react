@@ -57,6 +57,8 @@ function AccMenu({unityContext}) {
                 <Accordion.Collapse eventKey="1">
                     <Card.Body>
                         <DefaultItem type= "Cube" unityContext ={unityContext}></DefaultItem>
+                        <DefaultItem type= "Sphere" unityContext ={unityContext}></DefaultItem>
+                        <DefaultItem type= "Lamp" unityContext ={unityContext}></DefaultItem>
                     </Card.Body>
                 </Accordion.Collapse>
             </Card>

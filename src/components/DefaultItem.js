@@ -4,14 +4,13 @@ export default function DefaultItem({type,unityContext}) {
 
 
     function SpawnItemEvent() {
-        unityContext.send("WebGLConnector", "SpawnItemEvent", "Cube");
+        unityContext.send("WebGLConnector", "SpawnItemEvent", type);
         console.log("spawing Cube");
       }
     return (
         <>
         <img src="res/icons/icon_edit.png" onClick={SpawnItemEvent}></img>
-        <p>Test</p>
-            
+        <p>{type}</p>
         </>
     )
 }
