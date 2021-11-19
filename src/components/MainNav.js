@@ -18,7 +18,7 @@ const MainNav = ({unityContext}) => {
             </Nav>
             </div>
             <div className="bg-light  vh-100" style={{width: 280}}>
-            <Accordion>
+            {/* <Accordion>
                 <Accordion.Item eventKey="0">
                     <Accordion.Header >Project Info</Accordion.Header>
                     <Accordion.Body>
@@ -55,7 +55,7 @@ const MainNav = ({unityContext}) => {
                     est laborum.
                     </Accordion.Body>
                 </Accordion.Item>
-                </Accordion>
+                </Accordion> */}
 
                 
                 <AccMenu unityContext= {unityContext}></AccMenu>
