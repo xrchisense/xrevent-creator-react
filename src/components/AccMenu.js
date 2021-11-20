@@ -5,7 +5,7 @@ import Card from "react-bootstrap/Card";
 import { useContext } from "react";
 import { Form } from "react-bootstrap";
 import UploadButton from "./UploadButton";
-import DefaultItem from "./DefaultItem";
+import Item from "./Item";
 import { UnityContext } from "react-unity-webgl";
 
 
@@ -55,10 +55,10 @@ function AccMenu({unityContext}) {
                     <UploadButton/>                
                 </Card.Header>
                 <Accordion.Collapse eventKey="1">
-                    <Card.Body>
-                        <DefaultItem type= "Cube" unityContext ={unityContext}></DefaultItem>
-                        <DefaultItem type= "Sphere" unityContext ={unityContext}></DefaultItem>
-                        <DefaultItem type= "Lamp" unityContext ={unityContext}></DefaultItem>
+                    <Card.Body style={{display:"flex",}}>
+                        <Item type= "Cube" unityContext ={unityContext}></Item>
+                        <Item type= "Sphere" unityContext ={unityContext}></Item>
+                        <Item type= "Lamp" unityContext ={unityContext}></Item>
                     </Card.Body>
                 </Accordion.Collapse>
             </Card>
