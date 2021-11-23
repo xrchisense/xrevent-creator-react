@@ -10,14 +10,15 @@ function UploadButton() {
     }
 
     // FixMe: Currently the alert is fired almost immediatly when filebox opens
-    async function doUpload() {
+    const doUpload = async () => {
         let formData = new FormData();
         formData.append("file", inputRef.current.files[0]);
-        await fetch('/upload.php', {
+        const result = await fetch('/upload.php', {
             method: "POST",
             body: formData
         });
-        alert('The file has been uploaded successfully.');
+        await console.log(result)
+        await alert('The file has been uploaded successfully.')
         
     }
 

@@ -4,9 +4,8 @@ import AccordionContext from 'react-bootstrap/AccordionContext';
 import Card from "react-bootstrap/Card";
 import { useContext } from "react";
 import UploadButton from "./UploadButton";
-import Item from "./Item";
+import Items from "./Items";
 import Prefab from "./Prefab";
-
 
 
 function ContextAwareToggle({ children, eventKey, callback }) {
@@ -30,13 +29,8 @@ function ContextAwareToggle({ children, eventKey, callback }) {
     );
 }
 
-function AccMenu({ unityContext }) {
 
-    async function uploadFile() {
-
-    }
-
-
+function AccMenu({ fileNames, unityContext }) {
     return (
         <Accordion defaultActiveKey="">
             <Card>
@@ -68,9 +62,11 @@ function AccMenu({ unityContext }) {
                 </Card.Header>
                 <Accordion.Collapse eventKey="2">
                     <Card.Body>
-                        <Item type="Cube" unityContext={unityContext}></Item>
-                        <Item type="Sphere" unityContext={unityContext}></Item>
-                        <Item type="Lamp" unityContext={unityContext}></Item>
+                        
+                        {fileNames.length > 0 ? (
+                            <Items fileNames={fileNames} unityContext={unityContext}/>) : ( 'No files to show.'
+                        )}
+                        
                     </Card.Body>
                 </Accordion.Collapse>
             </Card>

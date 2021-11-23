@@ -4,7 +4,7 @@ import Stack from "react-bootstrap/Stack";
 
 import AccMenu from "./AccMenu";
 
-const MainNav = ({ unityContext }) => {
+const MainNav = ({ fileNames, unityContext }) => {
     return (
         <>
             <Stack direction="horizontal" gap={0} >
@@ -33,7 +33,7 @@ const MainNav = ({ unityContext }) => {
                     </Nav>
                 </div>
                 <div className="bg-light vh-100" style={{ width: 280 }}>
-                    <AccMenu unityContext={unityContext}></AccMenu>
+                    <AccMenu fileNames={fileNames} unityContext={unityContext}></AccMenu>
                 </div>
 
             </Stack>
