@@ -17,7 +17,7 @@ const TopNav = () => {
 			<Navbar className="expand-gl bg-light border" >
 				<Container fluid>
 					<Navbar.Brand href="#home">
-						<img src="/res/icons/logo.png" alt="XRevent logo"></img> {' '}
+						<img src="res/icons/logo.png" alt="XRevent logo"></img> {' '}
 						XRevent Creator
 					</Navbar.Brand>
 

@@ -4,7 +4,7 @@ export default function DefaultItem({ itemName, unityContext}) {
 
 
     function SpawnItemEvent() {
-        unityContext.send("WebGLConnector", "SpawnItemEvent", itemName);
+        unityContext.send("WebGLConnector", "SpawnGltf", "http://fischerkinder.de/upload/0f8fad5b-d9cb-469f-a165-70867728950e/items/"+ itemName );
         console.log(itemName);
     }
     return (
