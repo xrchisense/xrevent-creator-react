@@ -7,10 +7,10 @@ import MainNav from "./components/MainNav"
 import { Stack } from "react-bootstrap";
 
 const unityContext = new UnityContext({
-	loaderUrl: "AppWeb/Build/AppWeb.loader.js",
-	dataUrl: "AppWeb/Build/AppWeb.data",
-	frameworkUrl: "AppWeb/Build/AppWeb.framework.js",
-	codeUrl: "AppWeb/Build/AppWeb.wasm",
+	loaderUrl: "appweb/Build/appweb.loader.js",
+	dataUrl: "appweb/Build/appweb.data",
+	frameworkUrl: "appweb/Build/appweb.framework.js",
+	codeUrl: "appweb/Build/appweb.wasm",
 });
 
 

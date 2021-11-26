@@ -1,0 +1,3 @@
+[submodule "public/appweb"]
+	path = public/appweb
+	url = https://artemis.mt.haw-hamburg.de/xrchitecture/xrevent/appweb
