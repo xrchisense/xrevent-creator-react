@@ -31,7 +31,7 @@ function App() {
 
 	// Fetch Filenames from Server
 	const getFileListFromServer = async () => {
-		const response = await fetch('http://fischerkinder.de/upload/dir.php?UID=0f8fad5b-d9cb-469f-a165-70867728950e/items');
+		const response = await fetch('/upload/dir.php?UID=0f8fad5b-d9cb-469f-a165-70867728950e/items');
 		const fileListString = await response.text();
 		return fileListString
 	}
