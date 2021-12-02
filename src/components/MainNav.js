@@ -7,7 +7,7 @@ import SettingsMenu from "./SettingsMenu";
 import PretixMenu from "./PretixMenu";
 import LaunchMenu from "./LaunchMenu";
 
-const MainNav = ({ fileNames, unityContext }) => {
+const MainNav = ({ unityContext }) => {
     const [composeIsShown, setComposeIsShown] = useState(true)
     const [settingsIsShown, setSettingsIsShown] = useState(false)
     const [pretixIsShown, setPretixIsShown] = useState(false)
@@ -46,7 +46,7 @@ const MainNav = ({ fileNames, unityContext }) => {
     return (
         <>
             <Stack direction="horizontal" gap={0} >
-                <div  >
+                <div>
                     <Nav className="bg-light border flex-column vh-100" defaultActiveKey="compose" onSelect={menuHandler}>
                         <Nav.Link eventKey="compose">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="gray" className="bi bi-boxes" viewBox="0 0 16 16">
@@ -72,7 +72,7 @@ const MainNav = ({ fileNames, unityContext }) => {
                 </div>
 
                 <div className="bg-light vh-100" style={{ width: 280 }}>
-                    {composeIsShown && <AccMenu fileNames={fileNames} unityContext={unityContext} />}
+                    {composeIsShown && <AccMenu unityContext={unityContext} />}
                     {settingsIsShown && <SettingsMenu  />}
                     {pretixIsShown && <PretixMenu  />}
                     {launchIsShown && <LaunchMenu  />}

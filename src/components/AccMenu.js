@@ -2,7 +2,7 @@ import Accordion from "react-bootstrap/Accordion";
 import { useAccordionButton, Row } from "react-bootstrap";
 import AccordionContext from 'react-bootstrap/AccordionContext';
 import Card from "react-bootstrap/Card";
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import UploadButton from "./UploadButton";
 import Items from "./Items";
 import Prefab from "./Prefab";
@@ -30,7 +30,39 @@ function ContextAwareToggle({ children, eventKey, callback }) {
 }
 
 
-function AccMenu({ fileNames, unityContext }) {
+
+
+function AccMenu({ unityContext }) {
+
+    const [fileNames, setFileNames] = useState([])
+
+	useEffect(() =>{
+		const getFileNames = async () =>{
+			const fileNamesFromServer = await getFileListFromServer()
+			const responseString = await fileNamesFromServer.slice(0,-1); // remove last colon
+    		const itemArray = await responseString.split(",");
+			await setFileNames(itemArray)
+			console.log('list updated' + fileNames)
+		}
+		getFileNames()
+	}, [])
+
+	// Fetch Filenames from Server
+	const getFileListFromServer = async () => {
+		const response = await fetch('/upload/dir.php?UID=0f8fad5b-d9cb-469f-a165-70867728950e/items');
+		const fileListString = await response.text();
+		return fileListString
+	}
+
+
+    function addFile(addedFile){
+        console.log("AddFile " + addedFile)
+
+        fileNames.indexOf(addedFile) > -1 ? alert('Existing file updated.') :
+        setFileNames(fileNames => [...fileNames, addedFile]) // only manipulate state (View) if file does not exist
+    }
+
+
     return (
         <Accordion defaultActiveKey="">
             <Card>
@@ -58,7 +90,7 @@ function AccMenu({ fileNames, unityContext }) {
             <Card>
                 <Card.Header>
                     <ContextAwareToggle eventKey="2">Custom Items</ContextAwareToggle>
-                    <UploadButton />
+                    <UploadButton addFile={addFile}/>
                 </Card.Header>
                 <Accordion.Collapse eventKey="2">
                     <Card.Body>

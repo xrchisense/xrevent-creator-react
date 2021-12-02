@@ -16,25 +16,7 @@ const unityContext = new UnityContext({
 
 function App() {
 
-	const[fileNames, setFileNames] = useState([])
-
-	useEffect(() =>{
-		const getFileNames = async () =>{
-			const fileNamesFromServer = await getFileListFromServer()
-			const responseString = await fileNamesFromServer.slice(0,-1); // remove last colon
-    		const itemArray = await responseString.split(",");
-			await setFileNames(itemArray)
-			
-		}
-		getFileNames()
-	}, [])
-
-	// Fetch Filenames from Server
-	const getFileListFromServer = async () => {
-		const response = await fetch('/upload/dir.php?UID=0f8fad5b-d9cb-469f-a165-70867728950e/items');
-		const fileListString = await response.text();
-		return fileListString
-	}
+	
 
 	return (
 		<>
@@ -43,7 +25,7 @@ function App() {
 			<Stack direction="horizontal" gap={3} >
 
 			<div className="" >
-				<MainNav fileNames={fileNames} unityContext = {unityContext}></MainNav></div>
+				<MainNav unityContext = {unityContext}></MainNav></div>
 			<div className="bg-light border vh-100" >
 				<Unity className="Unity" unityContext={unityContext} /></div>
 			<div className="bg-light border vh-100 ms-auto">
