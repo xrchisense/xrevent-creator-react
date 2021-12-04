@@ -1,13 +1,17 @@
 import { Row, Col } from "react-bootstrap";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { IdbContext } from "../App";
 
 export default function DefaultItem({ itemName, unityContext}) {
     const [deleteIsShown, setDeleteIsShown] = useState(false)
     const [rowIsShown, setRowIsShown] = useState(true)
+    
+    // This context contains the current RoomID to take the assets from
+    const context = useContext(IdbContext)
 
     // SendMethod to trigger Unity WebGL to load the selected model
     function SpawnItemEvent() {
-        unityContext.send("WebGLConnector", "SpawnGltf", "/upload/0f8fad5b-d9cb-469f-a165-70867728950e/items/"+ itemName );
+        unityContext.send("WebGLConnector", "SpawnGltf", "/upload/" + context.currentRoomId + "/items/" + itemName );
         console.log(itemName);
     }
     
@@ -15,7 +19,7 @@ export default function DefaultItem({ itemName, unityContext}) {
         setRowIsShown(false)
         console.log(itemName);
 
-        const response = await fetch('/delete.php?filepath=0f8fad5b-d9cb-469f-a165-70867728950e/items/' + itemName);
+        const response = await fetch('/delete.php?filepath=' + context.currentRoomId + '/items/' + itemName);
         console.log(response);         
     }
 

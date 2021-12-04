@@ -1,9 +1,11 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useContext } from "react";
 import {Spinner} from "react-bootstrap";
+import { IdbContext } from "../App";
 
 function UploadButton({addFile}) {
 
     const [loadingIsShown, setLoadingIsShown] = useState(false)
+    const context = useContext(IdbContext)
 
     const inputRef = useRef(null)
 
@@ -17,7 +19,7 @@ function UploadButton({addFile}) {
         const selectedFile = inputRef.current.files[0];
         let formData = new FormData();
         formData.append("file", selectedFile)
-        formData.append("folder", "0f8fad5b-d9cb-469f-a165-70867728950e/items/")
+        formData.append("folder", context.currentRoomId + "/items/")
         
         setLoadingIsShown(true) // Change Upload Icon to loading icon
 

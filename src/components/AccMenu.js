@@ -6,7 +6,7 @@ import { useContext, useState, useEffect } from "react";
 import UploadButton from "./UploadButton";
 import Items from "./Items";
 import Prefab from "./Prefab";
-
+import { IdbContext } from "../App";
 
 function ContextAwareToggle({ children, eventKey, callback }) {
     const { activeEventKey } = useContext(AccordionContext);
@@ -35,6 +35,7 @@ function ContextAwareToggle({ children, eventKey, callback }) {
 function AccMenu({ unityContext }) {
 
     const [fileNames, setFileNames] = useState([])
+    const context = useContext(IdbContext)
 
 	useEffect(() =>{
 		const getFileNames = async () =>{
@@ -44,13 +45,16 @@ function AccMenu({ unityContext }) {
 			await setFileNames(itemArray)
 			console.log('list updated' + fileNames)
 		}
-		getFileNames()
-	}, [])
+        getFileNames()	
+        	
+	}, [context])
+
 
 	// Fetch Filenames from Server
-	const getFileListFromServer = async () => {
-		const response = await fetch('/upload/dir.php?UID=0f8fad5b-d9cb-469f-a165-70867728950e/items');
+	async function getFileListFromServer() {
+		const response = await fetch('/upload/dir.php?UID=' + context.currentRoomId + '/items');
 		const fileListString = await response.text();
+       
 		return fileListString
 	}
 
@@ -70,7 +74,7 @@ function AccMenu({ unityContext }) {
                     <ContextAwareToggle eventKey="0">Rooms</ContextAwareToggle>
                 </Card.Header>
                 <Accordion.Collapse eventKey="0">
-                    <Card.Body>Hello! I'm the body</Card.Body>
+                    <Card.Body>Hello! I'm the body {context.currentRoomId}</Card.Body>
                 </Accordion.Collapse>
             </Card>
             <Card>

@@ -13,24 +13,27 @@ const unityContext = new UnityContext({
 	codeUrl: "appweb/Build/appweb.wasm",
 });
 
+export const IdbContext = React.createContext(); // ToDo: Shift the Contest to a seperate provider.js
 
 function App() {
-
-	
+	const [currentRoomId, setCurrentRoomId] = useState("");
 
 	return (
 		<>
-			<TopNav />
+			<IdbContext.Provider value={{currentRoomId, setCurrentRoomId}}>
+				<TopNav unityContext={unityContext}/>
+			</IdbContext.Provider>
 
 			<Stack direction="horizontal" gap={3} >
-
 			<div className="" >
-				<MainNav unityContext = {unityContext}></MainNav></div>
+				<IdbContext.Provider value={{currentRoomId, setCurrentRoomId}}>
+					<MainNav unityContext={unityContext}></MainNav>
+				</IdbContext.Provider>
+			</div>
 			<div className="bg-light border vh-100" >
 				<Unity className="Unity" unityContext={unityContext} /></div>
 			<div className="bg-light border vh-100 ms-auto">
-				Third item</div>
-				
+				Third Column</div>
 			</Stack>
 		</>
 	);
