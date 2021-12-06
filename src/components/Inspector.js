@@ -16,10 +16,13 @@ export default function Inspector({ unityContext }) {
         });
     }, []);
 
-
-    return (
-        <>
-            <p>{itemName},{itemID}</p>
-        </>
-                )
+    if(isItemSelected){
+        return (
+            <>
+                <p>{itemName},{itemID}</p>
+            </>
+        )
+    }
+    return null;
+    
 }

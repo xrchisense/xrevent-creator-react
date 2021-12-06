@@ -13,11 +13,11 @@ const TopNav = ({unityContext}) => {
 	const [textField, setTextField] = useState("")
 	
 
-	useEffect(function(){
-		unityContext.on("InitRoomID", function(roomID){
+	useEffect(function () {
+		unityContext.on("ReportRoomID", function(roomID){
+			console.log("current roomID send from Unity: " + roomID );
 			setCurrentRoomId(roomID);	// To share among components
 			setTextField(roomID);		// For display only
-			console.log("current roomID: " + roomID );
 		});
 	}, []);
 
