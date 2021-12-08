@@ -35,12 +35,16 @@ const TopNav = ({unityContext}) => {
 	function requestLoadRoom(){
 		setCurrentRoomId(textField)
 		console.log("Requesting to load room: " + textField);
-		unityContext.send("WebGLConnector", "loadRoom", textField);
+		unityContext.send("WebGLConnector", "loadRoom", textField); //currentRoomId ??? 
 	}
 
 	function requestNewRoom(){
 		console.log("Requesting new room ID: ");
 		unityContext.send("WebGLConnector", "newRoom", "");
+	}
+
+	function requestSaveRoom(){
+		unityContext.send("WebGLConnector", "SaveRoom", "");
 	}
 	
 
@@ -83,7 +87,7 @@ const TopNav = ({unityContext}) => {
 						</InputGroup>
 					</Form.Group>
 
-					<button className="btn btn-outline-secondary">Save</button>
+					<button className="btn btn-outline-secondary" onClick={requestSaveRoom} >Save</button>
 
 				</Container>
 			</Navbar>
