@@ -26,14 +26,14 @@ function App() {
 			</IdbContext.Provider>
 
 			<Stack direction="horizontal" gap={3} >
-			<div className="" >
+			<div className="" style={{width: '20%'}} >
 				<IdbContext.Provider value={{currentRoomId, setCurrentRoomId}}>
 					<MainNav unityContext={unityContext}></MainNav>
 				</IdbContext.Provider>
 			</div>
-			<div className="bg-light border vh-100" >
+			<div className="bg-light border vh-100 "style={{width: '60%'}} >
 				<Unity className="Unity" unityContext={unityContext} /></div>
-			<div className="bg-light border vh-100 ms-auto">
+			<div className="bg-light border vh-100 m-auto" style={{width: '20%'}}>
 				<Inspector unityContext={unityContext}></Inspector></div>
 				
 			</Stack>
