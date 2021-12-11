@@ -87,6 +87,8 @@ function AccMenu({ unityContext }) {
                             <Prefab type="Cube" unityContext={unityContext}></Prefab>
                             <Prefab type="Sphere" unityContext={unityContext}></Prefab>
                             <Prefab type="Light" unityContext={unityContext}></Prefab>
+                            <Prefab type="Directional Light" unityContext={unityContext}></Prefab>
+                            <Prefab type="Plane" unityContext={unityContext}></Prefab>
                        </Row>
                     </Card.Body>
                 </Accordion.Collapse>
