@@ -19,6 +19,9 @@ export const IdbContext = React.createContext(); // ToDo: Shift the Contest to a
 function App() {
 	const [currentRoomId, setCurrentRoomId] = useState("");
 
+	//prevent middle MouseClick:
+	document.body.onmousedown = function(e) { if (e.button === 1) return false; }
+
 	return (
 		<>
 			<IdbContext.Provider value={{currentRoomId, setCurrentRoomId}}>
