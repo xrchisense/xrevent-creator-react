@@ -19,6 +19,9 @@ export const IdbContext = React.createContext(); // ToDo: Shift the Context to a
 function App() {
 	const [currentRoomId, setCurrentRoomId] = useState("");
 
+	//prevent middle MouseClick:
+	document.body.onmousedown = function(e) { if (e.button === 1) return false; }
+
 	return (
 		<>
 			<IdbContext.Provider value={{currentRoomId, setCurrentRoomId}}>
@@ -26,7 +29,7 @@ function App() {
 			</IdbContext.Provider>
 
 			<Stack direction="horizontal" gap={3} >
-			<div className="" >
+			<div className="" style={{width: '20%'}} >
 				<IdbContext.Provider value={{currentRoomId, setCurrentRoomId}}>
 					<MainNav unityContext={unityContext}></MainNav>
 				</IdbContext.Provider>
@@ -37,7 +40,7 @@ function App() {
 			<div className="bg-light border ms-auto" style={{height: 'calc(100vh - 4rem)'}}>
 				<Inspector unityContext={unityContext}></Inspector>
 			</div>
-				
+			
 			</Stack>
 		</>
 	);
