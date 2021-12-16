@@ -14,7 +14,7 @@ const unityContext = new UnityContext({
 	codeUrl: "appweb/Build/appweb.wasm",
 });
 
-export const IdbContext = React.createContext(); // ToDo: Shift the Contest to a seperate provider.js
+export const IdbContext = React.createContext(); // ToDo: Shift the Context to a seperate provider.js
 
 function App() {
 	const [currentRoomId, setCurrentRoomId] = useState("");
@@ -31,10 +31,12 @@ function App() {
 					<MainNav unityContext={unityContext}></MainNav>
 				</IdbContext.Provider>
 			</div>
-			<div className="bg-light border vh-100" >
-				<Unity className="Unity" unityContext={unityContext} /></div>
-			<div className="bg-light border vh-100 ms-auto">
-				<Inspector unityContext={unityContext}></Inspector></div>
+			<div className="bg-light border" style={{height: 'calc(100vh - 4rem)'}} >
+				<Unity className="Unity" unityContext={unityContext} />
+			</div>
+			<div className="bg-light border ms-auto" style={{height: 'calc(100vh - 4rem)'}}>
+				<Inspector unityContext={unityContext}></Inspector>
+			</div>
 				
 			</Stack>
 		</>

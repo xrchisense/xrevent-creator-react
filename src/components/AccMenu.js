@@ -39,11 +39,13 @@ function AccMenu({ unityContext }) {
 
 	useEffect(() =>{
 		const getFileNames = async () =>{
-			const fileNamesFromServer = await getFileListFromServer()
-			const responseString = await fileNamesFromServer.slice(0,-1); // remove last colon
-    		const itemArray = await responseString.split(",");
-			await setFileNames(itemArray)
-			console.log('list updated' + fileNames)
+			const fileNamesFromServer = await getFileListFromServer();
+            if(fileNamesFromServer !== ""){
+			    const responseString = await fileNamesFromServer.slice(0,-1); // remove last colon
+    		    const itemArray = await responseString.split(",");
+			    await setFileNames(itemArray)
+			    console.log('list updated' + fileNames)
+            }
 		}
         getFileNames()	
         	
@@ -53,7 +55,7 @@ function AccMenu({ unityContext }) {
 	// Fetch Filenames from Server
 	async function getFileListFromServer() {
 		const response = await fetch('/upload/dir.php?UID=' + context.currentRoomId + '/items');
-		const fileListString = await response.text();
+        const fileListString = await response.text();
        
 		return fileListString
 	}
