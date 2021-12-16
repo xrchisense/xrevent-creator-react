@@ -29,7 +29,7 @@ function App() {
 			</IdbContext.Provider>
 
 			<Stack direction="horizontal" gap={3} >
-			<div className="" style={{width: '20%'}} >
+			<div className="" style={{minWidth: 330, width: '20vw'}} >
 				<IdbContext.Provider value={{currentRoomId, setCurrentRoomId}}>
 					<MainNav unityContext={unityContext}></MainNav>
 				</IdbContext.Provider>
@@ -37,7 +37,7 @@ function App() {
 			<div className="bg-light border" style={{height: 'calc(100vh - 4rem)'}} >
 				<Unity className="Unity" unityContext={unityContext} />
 			</div>
-			<div className="bg-light border ms-auto" style={{height: 'calc(100vh - 4rem)'}}>
+			<div className="bg-light border ms-auto" style={{minWidth: 280, width:'20vw', height: 'calc(100vh - 4rem)'}}>
 				<Inspector unityContext={unityContext}></Inspector>
 			</div>
 			

@@ -71,7 +71,7 @@ const MainNav = ({ unityContext }) => {
                     </Nav>
                 </div>
 
-                <div className="bg-light" style={{ width: 280, height: 'calc(100vh - 4rem)' }}>
+                <div className="bg-light" style={{ minWidth: 280, height: 'calc(100vh - 4rem)' }}>
                     {composeIsShown && <AccMenu unityContext={unityContext} />}
                     {settingsIsShown && <SettingsMenu  />}
                     {pretixIsShown && <PretixMenu  />}

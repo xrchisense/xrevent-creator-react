@@ -73,7 +73,7 @@ function AccMenu({ unityContext }) {
         <Accordion defaultActiveKey="">
             <Card>
                 <Card.Header>
-                    <ContextAwareToggle eventKey="0">Rooms</ContextAwareToggle>
+                    <ContextAwareToggle eventKey="0">Main Properties</ContextAwareToggle>
                 </Card.Header>
                 <Accordion.Collapse eventKey="0">
                     <Card.Body>Hello! I'm the body {context.currentRoomId}</Card.Body>
