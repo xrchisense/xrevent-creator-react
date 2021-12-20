@@ -1,19 +1,94 @@
 import React from "react";
-import { Card, Form, Button } from "react-bootstrap";
 import {decode as atob, encode as btoa} from 'base-64'
 import {useState, useEffect} from "react"
+import PretixConnect from "./PretixConnect";
+import PretixAccess from "./PretixAccess";
+import PretixInfo from "./PretixInfo";
 
 function PretixMenu(){
-    const [access_token, setaccess_token] = useState("")
-    const [refresh_token, setrefresh_token] = useState("")
-    const [pretix_credentials, setpretix_credentials] = useState([])
+    
+    
+    const [connectIsShown, setConnectIsShown] = useState(true)
+    const [accessIsShown, setAccessIsShown] = useState(false)
+    const [infoIsShown, setInfoIsShown] = useState(false)
 
-    /*
+
+    
     useEffect(function () {
-		new URLSearchParams(window.location.search).get("code") != null ? requestToken() : console.log("There is no code.");
-		
+        // Check the session storage for an access_token from pretix first
+        window.sessionStorage.getItem('access_token') != null ? menuHandler("info") : console.log('There is no token in session storage.') 
+
+        // Check if there is an access_token in der URL params. If true store it to session storage.
+		// new URLSearchParams(window.location.search).get("access_token") != null ? menuHandler("access") : console.log("There is no access_token in url params.");
+	
+        // If there is a code param in the URL than go on and fetch the access_token 
+        new URLSearchParams(window.location.search).get("code") != null ? getToken() : console.log("There is no code in url params.")
+        //	new URLSearchParams(window.location.search).get("code") != null ? menuHandler("access") : console.log("There is no code.");
 	}, []);
+
+
+
+    const menuHandler = (eventKey) => {
+        hideAll()
+        
+        switch(eventKey) {
+            case 'connect':
+                setConnectIsShown(true)
+              break;
+            case 'access':
+              //  window.sessionStorage.setItem('access_token', new URLSearchParams(window.location.search).get("access_token"))
+              //  window.history.replaceState(null, null, window.location.pathname);
+              //  setInfoIsShown(true)
+                break;
+            case 'info':
+                setInfoIsShown(true)
+                break;
+            default:
+              break;
+          }
+    }
+
+    function hideAll(){
+        setConnectIsShown(false)
+        setAccessIsShown(false)
+        setInfoIsShown(false)
+    }
+ 
+
+    // Fetches the access_token when code is present
+    async function getToken(){
+        // Retrieve the access_token from the uri params and store it in a react state
+        let params = new URLSearchParams(window.location.search)
+        
+        try{
+            const result = await fetch('https://xrchitecture.de/oauth.php?code=' + params.get("code")
+            )
+            .then(function(response){
+                console.log(response)
+                return response.text()
+            })
+            .then(function(myToken){
+                // store to session storage
+                window.sessionStorage.setItem('access_token', myToken)
+                window.history.replaceState(null, null, window.location.pathname); //remove param from uri
+                menuHandler('info')
+            });
+            /*
+            if(result.status !== 200) {
+                console.log("Fetching token failed. Status code: " + result.status)
+            } else {    // store to session storage
+                window.sessionStorage.setItem('access_token', result.text())
+                window.history.replaceState(null, null, window.location.pathname); //remove param from uri
+                menuHandler('info')
+            }
+            console.log(result)
 */
+        } catch (error){
+            console.log("Fetching token with code failed: " + error)
+        }
+    }
+    
+
     async function requestToken(props)  {
        
         let params = new URLSearchParams(window.location.search)
@@ -49,47 +124,11 @@ function PretixMenu(){
 
 
     return (
-        <div className="text-center">
-            <Card border="gray" className="mx-auto"  >
-                <Card.Img className="mx-auto" style={{width: "150px", margin: "1rem"}} src="res/logos/pretix_logo.svg" type="submit" onClick={requestToken} altText="pretix logo"></Card.Img>
-                <Card.Body className="d-grid">
-                    <Form.Control size="sm" type="text" placeholder="E-Mail" />
-                    <Form.Control size="sm" style={{ marginTop: "1rem"}} type="password" placeholder="Password" />
-                    <Button size="sm" style={{background:"#7f5a91", boxShadow: "none", border: "none", marginTop: "1rem"}} type="submit" onClick={requestToken}>Login</Button>
-                    <a  href="https://pretix.eu/control/forgot" className="mx-auto" style={{color: "#563d62", textDecoration: "none", marginTop: "1rem", fontSize: "12px"}}>Forgot your password?</a>
-                    <a  href="https://pretix.eu/control/register" className="mx-auto" style={{color: "#563d62",textDecoration: "none", marginTop: "5px", fontSize: "12px"}} >Register</a>
-                </Card.Body>  
-            </Card>
-            <a  href="https://pretix.eu/about/de/" style={{color: "#563d62", textDecoration: "none", fontSize: "10px"}}>Event-Ticketing-Software powered by pretix</a>
-            <p> 
-                <a  href="https://pretix.eu/api/v1/oauth/authorize?client_id=1jMmI9bqw6MsUCzeIw3QhBuSFucnvsKJIe8eW8By&response_type=code&scope=read+write&redirect_uri=https://xrchitecture.de/xrevent-creator/" style={{color: "#563d62", textDecoration: "none", fontSize: "10px"}}>Request Code</a>
-            </p>
-            <p>
-                <form action="https://pretix.eu/api/v1/oauth/token" method="post">
-                    <label>
-                        Code:
-                        <input type="text" name="code" />                        
-                    </label>
-                    <label>
-                        Grant Type:
-                        <input type="text" name="grant_type" value="authorization_code"/>                        
-                    </label>
-                    <label>
-                        Redirect URI:
-                        <input type="text" name="redirect_uri" value="https://xrchitecture.de/xrevent-creator/" />                        
-                    </label>
-                    <label>
-                        Client_Id:
-                        <input type="text" name="client_id" value="1jMmI9bqw6MsUCzeIw3QhBuSFucnvsKJIe8eW8By" />                    
-                    </label>
-                    <label>
-                        Secret:
-                        <input type="text" name="client_secret" value="3TciTvJycQxRCtEgzdlp4UZjTyL9fdhzLR5PRojPm8sdbkEVekSeCg5yO4dlo7zjZNeWIU1Lw7HFfdAF9j1Qg4JFIn3B5xWZpnD4oJc27VjFanmJwiryu2BU0EteKWYM"/>                        
-                    </label>
-                    <input type="submit" value="Submit"/>
-                </form>
-            </p>
-        </div>
+        <>
+            {connectIsShown && <PretixConnect  />}
+            {accessIsShown && <PretixAccess />}
+            {infoIsShown && <PretixInfo />}
+        </>
     )
 }
 

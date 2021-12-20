@@ -12,7 +12,7 @@ const TopNav = ({unityContext}) => {
 	const {currentRoomId, setCurrentRoomId} = useContext(IdbContext);
 	const [textField, setTextField] = useState("")
 	
-
+	// This function runs only on the first render as array for dependencies is purposely left empty
 	useEffect(function () {
 		unityContext.on("ReportRoomID", function(roomID){
 			console.log("current roomID send from Unity: " + roomID );

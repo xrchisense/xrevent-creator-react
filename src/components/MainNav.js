@@ -1,6 +1,6 @@
 import Nav from "react-bootstrap/Nav";
 import Stack from "react-bootstrap/Stack";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import AccMenu from "./AccMenu";
 import SettingsMenu from "./SettingsMenu";
@@ -13,10 +13,15 @@ const MainNav = ({ unityContext }) => {
     const [pretixIsShown, setPretixIsShown] = useState(false)
     const [launchIsShown, setLaunchIsShown] = useState(false)
     
+    // Switch to pretix menu if param exists
+    useEffect(function () {
+        new URLSearchParams(window.location.search).get("code") != null || new URLSearchParams(window.location.search).get("access_token") ? menuHandler('pretix') : console.log("No menu preference set.")
+	}, []);
+
+
     const menuHandler = (eventKey) => {
         hideAll()
         
-
         switch(eventKey) {
             case 'compose':
                 setComposeIsShown(true)
