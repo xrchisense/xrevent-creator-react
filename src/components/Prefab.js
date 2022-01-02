@@ -2,7 +2,7 @@ import { Card, Col } from "react-bootstrap";
 
 export default function DefaultPrefab({ unityContext, type }) {
     function SpawnItemEvent() {
-        unityContext.send("WebGLConnector", "SpawnPrefab", type);
+        unityContext.send("LevelManager", "SpawnPrefab", type);
 
     }
 

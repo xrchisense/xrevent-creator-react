@@ -35,16 +35,16 @@ const TopNav = ({unityContext}) => {
 	function requestLoadRoom(){
 		setCurrentRoomId(textField)
 		console.log("Requesting to load room: " + textField);
-		unityContext.send("WebGLConnector", "loadRoom", textField); //currentRoomId ??? 
+		unityContext.send("LevelManager", "loadRoom", textField); //currentRoomId ??? 
 	}
 
 	function requestNewRoom(){
 		console.log("Requesting new room ID: ");
-		unityContext.send("WebGLConnector", "newRoom", "");
+		unityContext.send("LevelManager", "newRoom", "");
 	}
 
 	function requestSaveRoom(){
-		unityContext.send("WebGLConnector", "SaveRoom", "");
+		unityContext.send("LevelManager", "SaveRoom", "");
 	}
 	
 

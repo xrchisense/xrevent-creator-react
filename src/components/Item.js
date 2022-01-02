@@ -11,7 +11,7 @@ export default function DefaultItem({ itemName, unityContext}) {
 
     // SendMethod to trigger Unity WebGL to load the selected model
     function SpawnItemEvent() {
-        unityContext.send("WebGLConnector", "SpawnGltf", itemName );
+        unityContext.send("LevelManager", "SpawnGltf", itemName );
         console.log(itemName);
     }
     
