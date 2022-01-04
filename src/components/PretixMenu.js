@@ -55,17 +55,21 @@ function PretixMenu(){
     }
  
 
-    // Fetches the access_token when code is present
+    // Fetches the access_token when code is present in uri params
     async function getToken(){
-        // Retrieve the access_token from the uri params and store it in a react state
-        let params = new URLSearchParams(window.location.search)
         
-        try{
-            const result = await fetch('https://xrchitecture.de/oauth.php?code=' + params.get("code")
+        let params = new URLSearchParams(window.location.search)
+        let currentBaseUrl =  window.location.origin  // Should be "http://xrchitecture.de"
+
+        try{            
+            const result = await fetch( currentBaseUrl + '/oauth.php?code=' + params.get("code")
             )
             .then(function(response){
                 console.log(response)
-                return response.text()
+
+                // ToDo: Validate response. Check if the returned text is a token or a html reply. HTML Reply might 
+                // come in, if something went wrong with the token request.
+                return response.text()  
             })
             .then(function(myToken){
                 // store to session storage

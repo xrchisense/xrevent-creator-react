@@ -17,7 +17,7 @@ function PretixInfo(){
         let access_token = window.sessionStorage.getItem('access_token')
         
        
-        await fetch('https://xrchitecture.de/oauth.php?access_token=' + access_token
+        await fetch('/oauth.php?access_token=' + access_token
         )
         .then(function(response){
             if(response.ok){

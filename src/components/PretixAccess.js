@@ -11,7 +11,7 @@ function PretixAccess(){
         setaccess_token( params.get("access_token") )
 
         try{
-            const result = await fetch('https://xrchitecture.de/oauth.php?access_token=' + params.get("access_token"));
+            const result = await fetch('/oauth.php?access_token=' + params.get("access_token"));
 
             console.log(result)
 
