@@ -131,7 +131,11 @@ function PretixMenu(){
         <>
             {connectIsShown && <PretixConnect  />}
             {accessIsShown && <PretixAccess />}
-            {infoIsShown && <PretixInfo />}
+            {infoIsShown && 
+                <>
+                    <PretixInfo />
+                </>
+            }
         </>
     )
 }

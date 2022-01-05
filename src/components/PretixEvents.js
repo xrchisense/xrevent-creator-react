@@ -1,24 +1,23 @@
 import { useState, useEffect } from 'react'
-import PretixEventSelectButton from './PretixEventSelectButton';
 
-function PretixInfo(){
+function PretixEvents(){
     const [pretixData, setPretixData] = useState(null)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
 
     // Retrieve some info on first render
     useEffect(function () {
-        window.sessionStorage.getItem('access_token') != null ? getRessources('&endpoint=organizers/') : console.log("[PretixInfo] There seems to be no token in session storage.")
+        window.sessionStorage.getItem('access_token') != null ? getRessources() : console.log("[PretixInfo] There seems to be no token in session storage.")
 	}, []);
 
 
     // Fetches some infos from pretix as token should be available in session storage
-    async function getRessources(endpoint){
+    async function getRessources(){
         // Retrieve the access_token from the session storage
         let access_token = window.sessionStorage.getItem('access_token')
         
        
-        await fetch('/oauth.php?access_token=' + access_token + endpoint
+        await fetch('/oauth.php?access_token=' + access_token + '&endpoint=organizers/patrock/events/'
         )
         .then(function(response){
             if(response.ok){
@@ -47,14 +46,12 @@ function PretixInfo(){
             {loading &&  
                 <p>Loading...</p>
             }
-            {!loading && pretixData.count > 0 &&
-                <PretixEventSelectButton organizerSlug={pretixData.results[0].slug} />
-            }
             {!loading && 
-                <p>{pretixData.details}</p>
+                <div><p>{pretixData.name}</p>
+                <p>{pretixData.detail}</p></div>
             }           
         </>
     );
 }
 
-export default PretixInfo;
+export default PretixEvents;
