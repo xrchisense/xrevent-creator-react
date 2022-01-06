@@ -1,5 +1,5 @@
 import Accordion from "react-bootstrap/Accordion";
-import { useAccordionButton, Row } from "react-bootstrap";
+import { useAccordionButton, Row, Col } from "react-bootstrap";
 import AccordionContext from 'react-bootstrap/AccordionContext';
 import Card from "react-bootstrap/Card";
 import { useContext, useState, useEffect } from "react";
@@ -86,11 +86,13 @@ function AccMenu({ unityContext }) {
                 <Accordion.Collapse eventKey="1">
                     <Card.Body >
                         <Row>
+                            
                             <Prefab type="Cube" unityContext={unityContext}></Prefab>
                             <Prefab type="Sphere" unityContext={unityContext}></Prefab>
-                            <Prefab type="Light" unityContext={unityContext}></Prefab>
+                            <Prefab type="Point Light" unityContext={unityContext}></Prefab>
                             <Prefab type="Directional Light" unityContext={unityContext}></Prefab>
                             <Prefab type="Plane" unityContext={unityContext}></Prefab>
+                            
                        </Row>
                     </Card.Body>
                 </Accordion.Collapse>

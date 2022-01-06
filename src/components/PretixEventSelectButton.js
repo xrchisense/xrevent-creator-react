@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Dropdown from 'react-bootstrap/Dropdown'
-import { Card } from 'react-bootstrap'
+import { Card, Row, Col, Form, Button } from 'react-bootstrap'
+
 
 function PretixEventSelectButton({ organizerSlug }) {
     const [pretixData, setPretixData] = useState(null)
@@ -54,7 +55,7 @@ function PretixEventSelectButton({ organizerSlug }) {
 
                     {!loading && pretixData.count > 0 &&
 
-                        <div style={{width:"230px"}}>1. Select the Pretix Event you wish to add your XRevent room to.
+                        <div style={{width:"250px"}}>1. Select the Pretix Event you wish to add your XRevent room to.
                             <Dropdown>
                                 <Dropdown.Toggle variant="success" id="dropdown-basic" style={{ background: "#7f5a91", boxShadow: "none", border: "none", marginTop: "1rem", width:"100%" }}>
                                     Pretix Event
@@ -62,12 +63,65 @@ function PretixEventSelectButton({ organizerSlug }) {
 
                                 <Dropdown.Menu >
                                     {pretixData.results.map((event, index) => (
-                                        <Dropdown.Item onClick={() => setSelectedEvent(index)}>{event.slug.toString()}</Dropdown.Item>
+                                        <Dropdown.Item onClick={() => setSelectedEvent(index)}>{Object.values(event.name)[0].toString()}</Dropdown.Item>
                                     ))}
                                 </Dropdown.Menu>
                             </Dropdown>
-                            {selectedEvent != null ? JSON.stringify(pretixData.results[selectedEvent]) : ''
 
+                            {selectedEvent != null &&
+                                <>
+                                <p>
+                                <Row>
+                                    <Col style={{ textAlign: "left", maxWidth: "110px"  }}>Eventname</Col>
+                                    <Col style={{ textAlign: "left" }}>{Object.values(pretixData.results[selectedEvent].name)[0].toString()}</Col>
+                                </Row>
+                                <Row>
+                                    <Col auto style={{ textAlign: "left", maxWidth: "110px"  }}>Live</Col>
+                                    <Col style={{ textAlign: "left" }}>{pretixData.results[selectedEvent].live.toString()}</Col>
+                                </Row>
+                                <Row>                                
+                                    <Col style={{ textAlign: "left", maxWidth: "110px"  }}>Testmode</Col>
+                                    <Col style={{ textAlign: "left" }}>{pretixData.results[selectedEvent].testmode.toString()}</Col>
+                                </Row>
+                                <Row>                                
+                                    <Col style={{ textAlign: "left", maxWidth: "110px"  }}>Timezone</Col>
+                                    <Col style={{ textAlign: "left" }}>{pretixData.results[selectedEvent].timezone.toString()}</Col>
+                                </Row>
+                                <Row>                                
+                                    <Col style={{ textAlign: "left", maxWidth: "110px" }}>Event start</Col>
+                                    <Col className="text-truncate" style={{ textAlign: "left" }}>{pretixData.results[selectedEvent].date_from.toString()}</Col>
+                                </Row>
+                                <Row>                                 
+                                    <Col style={{ textAlign: "left", maxWidth: "110px" }}>Event end</Col>
+                                    <Col className="text-truncate" style={{ textAlign: "left" }}>{pretixData.results[selectedEvent].date_to.toString()}</Col>
+                                </Row>
+                                <Row>                                
+                                    <Col style={{ textAlign: "left", maxWidth: "110px" }}>Presale start</Col>
+                                    <Col className="text-truncate" style={{ textAlign: "left" }}>{pretixData.results[selectedEvent].presale_start.toString()}</Col>
+                                </Row>
+                                <Row>                                
+                                    <Col style={{ textAlign: "left", maxWidth: "110px" }}>Presale end</Col>
+                                    <Col className="text-truncate" style={{ textAlign: "left" }}>{pretixData.results[selectedEvent].presale_end.toString()}</Col>
+                                </Row>
+
+                                <a href="https://pretix.eu/control/" className="mx-auto" style={{ color: "#563d62", textDecoration: "none", marginTop: "5px", fontSize: "12px" }} >Change Event Settings via Pretix &gt;&gt;</a>
+                                </p>
+                               
+                                <p>
+                                    <div>2. Your room can only go live on XRevent Platform, if the XRevent Team is invited as team member to your Pretix event.</div>
+                                    <Form action="/oauth.php">
+                                        <Button style={{ background: "#7f5a91", boxShadow: "none", border: "none", marginTop: "1rem", width:"100%"}} type="submit">Invite XRevent Team</Button>
+                                    </Form>
+                                </p>
+                                
+                                <p>
+                                    <div>3. Add the XRevent Room ID to your Pretix Event Settings. The room will then be available on the XRevent Platform.</div>
+                                    <Form action="/oauth.php">
+                                        <Button style={{ background: "#7f5a91", boxShadow: "none", border: "none", marginTop: "1rem", width:"100%" }} type="submit">Add XRevent Room ID</Button>
+                                    </Form>
+                                </p>
+                                </>
+                                
                             }
                         </div>
                     }
