@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import Dropdown from 'react-bootstrap/Dropdown'
 import { Card, Row, Col, Form, Button } from 'react-bootstrap'
+import PretixInviteButton from './PretixInviteButton'
+import PretixAddRoomButton from './PretixAddRoomButton'
 
 
 function PretixEventSelectButton({ organizerSlug }) {
@@ -104,21 +106,17 @@ function PretixEventSelectButton({ organizerSlug }) {
                                     <Col className="text-truncate" style={{ textAlign: "left" }}>{pretixData.results[selectedEvent].presale_end.toString()}</Col>
                                 </Row>
 
-                                <a href="https://pretix.eu/control/" className="mx-auto" style={{ color: "#563d62", textDecoration: "none", marginTop: "5px", fontSize: "12px" }} >Change Event Settings via Pretix &gt;&gt;</a>
+                                <a href="https://pretix.eu/control/" className="mx-auto" style={{ color: "#7f5a91", marginTop: "5px", fontSize: "14px" }} >Change Event Settings via Pretix &gt;&gt;</a>
                                 </p>
                                
                                 <p>
                                     <div>2. Your room can only go live on XRevent Platform, if the XRevent Team is invited as team member to your Pretix event.</div>
-                                    <Form action="/oauth.php">
-                                        <Button style={{ background: "#7f5a91", boxShadow: "none", border: "none", marginTop: "1rem", width:"100%"}} type="submit">Invite XRevent Team</Button>
-                                    </Form>
+                                    <PretixInviteButton organizerSlug={organizerSlug} eventSlug={pretixData.results[selectedEvent].slug}/>
                                 </p>
                                 
                                 <p>
                                     <div>3. Add the XRevent Room ID to your Pretix Event Settings. The room will then be available on the XRevent Platform.</div>
-                                    <Form action="/oauth.php">
-                                        <Button style={{ background: "#7f5a91", boxShadow: "none", border: "none", marginTop: "1rem", width:"100%" }} type="submit">Add XRevent Room ID</Button>
-                                    </Form>
+                                    <PretixAddRoomButton organizerSlug={organizerSlug} eventSlug={pretixData.results[selectedEvent].slug}/>
                                 </p>
                                 </>
                                 
