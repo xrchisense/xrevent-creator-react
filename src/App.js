@@ -5,7 +5,7 @@ import Unity, { UnityContext } from "react-unity-webgl";
 import TopNav from "./components/TopNav"
 import MainNav from "./components/MainNav"
 import { Stack } from "react-bootstrap";
-import Inspector from "./components/Inspector";
+import Inspector from "./components/Inspector/Inspector";
 
 const unityContext = new UnityContext({
 	loaderUrl: "appweb/Build/appweb.loader.js",
