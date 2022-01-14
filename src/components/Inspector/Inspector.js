@@ -12,11 +12,13 @@ function Inspector({ unityContext }) {
 
 
     useEffect(function () {
-        unityContext.on("ItemInfo", function (itemName, itemID) {
+        unityContext.on("ItemInfo", function (itemName, itemID,itemdata) {
             console.log("recieved 'ItemInfo' From Unity");
             setIsItemSelected(true);
             setItemName(itemName);
             setItemID(itemID);
+
+            console.log(itemdata);
             //float Array with: Position, Rotation, Scale, ??
             //setInfoArray(InfoArray);
         });
@@ -32,6 +34,10 @@ function Inspector({ unityContext }) {
         console.log("Item Delete Requested");
     }
 
+    function RefreshData() {
+        unityContext.send("LevelManager", "GetObjectInfo");
+    }
+
 
     return (
         <>
@@ -41,7 +47,9 @@ function Inspector({ unityContext }) {
                     <Card.Body>
                         <p>Item Name: {itemName}, {itemID}</p>
                         <button style={{ width: "100%" }} className="btn btn-outline-secondary" onClick={DeleteItemEvent}>Remove Item</button>
+                        <button style={{ width: "100%" }} className="btn btn-outline-secondary" onClick={RefreshData}>RefreshData</button>
                     </Card.Body>
+                    
                 </Card>
                 <Card>
                     <Card.Header>Transform</Card.Header>
