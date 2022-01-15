@@ -35,7 +35,7 @@ function Inspector({ unityContext }) {
     }
 
     function RefreshData() {
-        unityContext.send("LevelManager", "GetObjectInfo");
+        unityContext.send("LevelManager", "ReportObjectInfo");
     }
 
 
