@@ -6,6 +6,7 @@ import TopNav from "./components/TopNav"
 import MainNav from "./components/MainNav"
 import { Stack } from "react-bootstrap";
 import Inspector from "./components/Inspector/Inspector";
+import PopUp from "./components/PopUp";
 
 const unityContext = new UnityContext({
 	loaderUrl: "appweb/Build/appweb.loader.js",
@@ -18,12 +19,14 @@ export const IdbContext = React.createContext(); // ToDo: Shift the Context to a
 
 function App() {
 	const [currentRoomId, setCurrentRoomId] = useState("");
+	const [showPopUp,setPopUpState] = useState(false);
 
 	//prevent middle MouseClick:
 	document.body.onmousedown = function(e) { if (e.button === 1) return false; }
 
 	return (
 		<>
+			<PopUp unityContext = {unityContext} showPopUpState={showPopUp} setShowPopUpState={setPopUpState}/>
 			<IdbContext.Provider value={{currentRoomId, setCurrentRoomId}}>
 				<TopNav unityContext={unityContext}/>
 			</IdbContext.Provider>
@@ -38,7 +41,7 @@ function App() {
 				<Unity className="Unity" unityContext={unityContext} />
 			</div>
 			<div className="bg-light border ms-auto" style={{minWidth: 280, width:'20vw', height: 'calc(100vh - 4rem)'}}>
-				<Inspector unityContext={unityContext}></Inspector>
+				<Inspector unityContext={unityContext} setPopUpState={ setPopUpState}></Inspector>
 			</div>
 			
 			</Stack>

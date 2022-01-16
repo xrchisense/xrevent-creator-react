@@ -2,13 +2,16 @@ import React, { useState, useEffect } from "react";
 import { Accordion, Form, Card, Row, Col } from "react-bootstrap";
 import GameObjectDetails from "./GameObjectDetails";
 import ContextAwareToggle from "../ContextAwareToggle";
+import PopUp from "../PopUp";
 
-function Inspector({ unityContext }) {
+function Inspector({ unityContext ,setPopUpState}) {
 
     const [isItemSelected, setIsItemSelected] = useState(false);
     const [itemName, setItemName] = useState("");
     const [itemID, setItemID] = useState(0);
     const [InfoArray, setInfoArray] = useState(new Float32Array());
+
+    
 
 
     useEffect(function () {
@@ -36,6 +39,10 @@ function Inspector({ unityContext }) {
 
     function RefreshData() {
         unityContext.send("LevelManager", "ReportObjectInfo");
+    }
+
+    function handleOpen(){
+        setPopUpState(true);
     }
 
 
@@ -88,6 +95,9 @@ function Inspector({ unityContext }) {
                         </Card.Body>
                     </Accordion.Collapse>
                 </Card>
+                <button variant="primary" onClick={handleOpen} style = {{margin: '10%',width: '80%',}}>
+                    DEBUG: Launch PopUp
+                </button>
             </Accordion>
         </>
 
