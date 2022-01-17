@@ -24,6 +24,12 @@ export default function DefaultPrefab({ unityContext, type }) {
                 { type === "Plane" &&
                 <Card.Img className="card-img-top"  src="res/icons/icon_plane.png" style={{maxHeight: "100px"}} altText=""></Card.Img>
                 }  
+                { type === "Entrance" &&
+                <Card.Img className="card-img-top"  src="res/icons/icon_event_entrance.png" style={{maxHeight: "100px"}} altText=""></Card.Img>
+                }
+                { type === "Videowall" &&
+                <Card.Img className="card-img-top"  src="res/icons/icon_videowall.png" style={{maxHeight: "100px"}} altText=""></Card.Img>
+                }
                 <Card.Body style={{padding: "0rem 0.5rem"}}>{type}</Card.Body>
             </Card>
         </Col>

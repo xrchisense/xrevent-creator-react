@@ -24,6 +24,16 @@ function App() {
 	//prevent middle MouseClick:
 	document.body.onmousedown = function(e) { if (e.button === 1) return false; }
 
+	document.addEventListener('click', function(e){
+		console.log(e.target.id)
+		if(e.target.id === "unity-canvas-1"){
+			unityContext.send("LevelManager", "SetKeyboardCapture ", "1")
+		} else {
+			unityContext.send("LevelManager", "SetKeyboardCapture ", "0")
+		}
+	
+	})
+
 	return (
 		<>
 			<PopUp unityContext = {unityContext} showPopUpState={showPopUp} setShowPopUpState={setPopUpState}/>
@@ -41,7 +51,7 @@ function App() {
 				<Unity className="Unity" unityContext={unityContext} />
 			</div>
 			<div className="bg-light border ms-auto" style={{minWidth: 280, width:'20vw', height: 'calc(100vh - 4rem)'}}>
-				<Inspector unityContext={unityContext} setPopUpState={ setPopUpState}></Inspector>
+				<Inspector unityContext={unityContext} tabIndex={1} setPopUpState={ setPopUpState}></Inspector>
 			</div>
 			
 			</Stack>
