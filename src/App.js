@@ -27,9 +27,9 @@ function App() {
 	document.addEventListener('click', function(e){
 		console.log(e.target.id)
 		if(e.target.id === "unity-canvas-1"){
-			unityContext.send("LevelManager", "SetKeyboardCapture ", "1")
+			unityContext.send("LevelManager", "SetKeyboardCapture", "1")
 		} else {
-			unityContext.send("LevelManager", "SetKeyboardCapture ", "0")
+			unityContext.send("LevelManager", "SetKeyboardCapture", "0")
 		}
 	
 	})
