@@ -144,7 +144,7 @@ function AccMenu({ unityContext }) {
                             <Prefab type="Directional Light" unityContext={unityContext}></Prefab>
                             <Prefab type="Plane" unityContext={unityContext}></Prefab>
                             <Prefab type="Entrance" unityContext={unityContext}></Prefab>
-                            <Prefab type="Videowall" unityContext={unityContext}></Prefab>
+                            <Prefab type="VideoWall" unityContext={unityContext}></Prefab>
                        </Row>
                     </Card.Body>
                 </Accordion.Collapse>
