@@ -18,13 +18,15 @@ function Inspector({ unityContext ,setPopUpState}) {
     useEffect(function () {
         unityContext.on("ItemInfo", function (itemName, itemID, itemdata) {
             console.log("recieved 'ItemInfo' From Unity");
+            if (itemName == "" && itemID == 0) {
+                setIsItemSelected(false);
+                return;
+            }
             setIsItemSelected(true);
             setItemName(itemName);
             setItemID(itemID);
             setItemTransform(itemdata);
             console.log(itemdata);
-            //float Array with: Position, Rotation, Scale, ??
-            //setInfoArray(InfoArray);
         });
     }, []);
 
@@ -46,63 +48,70 @@ function Inspector({ unityContext ,setPopUpState}) {
         setPopUpState(true);
     }
 
-    
-    return (
-        <>
-            <Accordion defaultActiveKey="">
-                <Card>
-                    <Card.Header>Item Inspector</Card.Header>
-                    <Card.Body>
-                        <p>Item Name: {itemName}, {itemID}</p>
-                        <button style={{ width: "100%" }} className="btn btn-outline-secondary" onClick={DeleteItemEvent}>Remove Item</button>
-                        <button style={{ width: "100%" }} className="btn btn-outline-secondary" onClick={RefreshData}>RefreshData</button>
-                    </Card.Body>
-                    
-                </Card>
-                <Card>
-                    <Card.Header>Transform</Card.Header>
-                    <Card.Body >
-                        <Row>
-                            <Col>
-                                <Form.Label>Position</Form.Label>
-                                <Form.Control name="x" type="text" placeholder="X" value={itemTransform == null ? null : itemTransform[0].toFixed(3)} onChange={e => unityContext.send("LevelManager", "MoveSelectedObjectX", parseFloat(e.target.value))}/>
-                                <Form.Control name="y" type="text" placeholder="Y" value={itemTransform == null ? null : itemTransform[1].toFixed(3)} onChange={e => unityContext.send("LevelManager", "MoveSelectedObjectY", parseFloat(e.target.value))}/>
-                                <Form.Control name="z" type="text" placeholder="Z" value={itemTransform == null ? null : itemTransform[2].toFixed(3)} onChange={e => unityContext.send("LevelManager", "MoveSelectedObjectZ", parseFloat(e.target.value))}/>
-                            </Col>
-                            <Col>
-                                <Form.Label>Rotation</Form.Label>
-                                <Form.Control name="X" type="text" placeholder="X" value={itemTransform == null ? null : itemTransform[3].toFixed(3)} onChange={e => unityContext.send("LevelManager", "RotateSelectedObjectX", e.target.value)}/>
-                                <Form.Control name="Y" type="text" placeholder="Y" value={itemTransform == null ? null : itemTransform[4].toFixed(3)} onChange={e => unityContext.send("LevelManager", "RotateSelectedObjectY", e.target.value)}/>
-                                <Form.Control name="Z" type="text" placeholder="Z" value={itemTransform == null ? null : itemTransform[5].toFixed(3)} onChange={e => unityContext.send("LevelManager", "RotateSelectedObjectZ", e.target.value)}/>
-                            </Col>
-                            <Col>
-                                <Form.Label>Scale</Form.Label>
-                                <Form.Control name="x" type="text" placeholder="X" value={itemTransform == null ? null : itemTransform[6].toFixed(3)} onChange={e => unityContext.send("LevelManager", "ScaleSelectedObjectX", e.target.value)}/>
-                                <Form.Control name="y" type="text" placeholder="Y" value={itemTransform == null ? null : itemTransform[7].toFixed(3)} onChange={e => unityContext.send("LevelManager", "ScaleSelectedObjectY", e.target.value)}/>
-                                <Form.Control name="z" type="text" placeholder="Z" value={itemTransform == null ? null : itemTransform[8].toFixed(3)} onChange={e => unityContext.send("LevelManager", "ScaleSelectedObjectZ", e.target.value)}/>
-                            </Col>
-                        </Row>
-                    </Card.Body>
-                </Card>
-                <Card>
-                    <Card.Header>
-                        <ContextAwareToggle eventKey="2">Prefab Properties</ContextAwareToggle>
-                    </Card.Header>
-                    <Accordion.Collapse eventKey="2">
+    if (isItemSelected) {
+        return (
+            <>
+                <Accordion defaultActiveKey="">
+                    <Card>
+                        <Card.Header>Item Inspector</Card.Header>
                         <Card.Body>
-
-                            Custom Args may go here?
-
+                            <p>Item Name: {itemName}, {itemID}</p>
+                            <button style={{ width: "100%" }} className="btn btn-outline-secondary" onClick={DeleteItemEvent}>Remove Item</button>
+                            <button style={{ width: "100%" }} className="btn btn-outline-secondary" onClick={RefreshData}>RefreshData</button>
                         </Card.Body>
-                    </Accordion.Collapse>
-                </Card>
-                <button variant="primary" onClick={handleOpen} style = {{margin: '10%',width: '80%',}}>
-                    DEBUG: Launch PopUp
-                </button>
-            </Accordion>
-        </>
-
-    );
+                        
+                    </Card>
+                    <Card>
+                        <Card.Header>Transform</Card.Header>
+                        <Card.Body >
+                            <Row>
+                                <Col>
+                                    <Form.Label>Position</Form.Label>
+                                    <Form.Control name="x" type="text" placeholder="X" value={itemTransform == null ? null : itemTransform[0].toFixed(3)} onChange={e => unityContext.send("LevelManager", "MoveSelectedObjectX", parseFloat(e.target.value))}/>
+                                    <Form.Control name="y" type="text" placeholder="Y" value={itemTransform == null ? null : itemTransform[1].toFixed(3)} onChange={e => unityContext.send("LevelManager", "MoveSelectedObjectY", parseFloat(e.target.value))}/>
+                                    <Form.Control name="z" type="text" placeholder="Z" value={itemTransform == null ? null : itemTransform[2].toFixed(3)} onChange={e => unityContext.send("LevelManager", "MoveSelectedObjectZ", parseFloat(e.target.value))}/>
+                                </Col>
+                                <Col>
+                                    <Form.Label>Rotation</Form.Label>
+                                    <Form.Control name="X" type="text" placeholder="X" value={itemTransform == null ? null : itemTransform[3].toFixed(3)} onChange={e => unityContext.send("LevelManager", "RotateSelectedObjectX", parseFloat(e.target.value))}/>
+                                    <Form.Control name="Y" type="text" placeholder="Y" value={itemTransform == null ? null : itemTransform[4].toFixed(3)} onChange={e => unityContext.send("LevelManager", "RotateSelectedObjectY", parseFloat(e.target.value))}/>
+                                    <Form.Control name="Z" type="text" placeholder="Z" value={itemTransform == null ? null : itemTransform[5].toFixed(3)} onChange={e => unityContext.send("LevelManager", "RotateSelectedObjectZ", parseFloat(e.target.value))}/>
+                                </Col>
+                                <Col>
+                                    <Form.Label>Scale</Form.Label>
+                                    <Form.Control name="x" type="text" placeholder="X" value={itemTransform == null ? null : itemTransform[6].toFixed(3)} onChange={e => unityContext.send("LevelManager", "ScaleSelectedObjectX", parseFloat(e.target.value))}/>
+                                    <Form.Control name="y" type="text" placeholder="Y" value={itemTransform == null ? null : itemTransform[7].toFixed(3)} onChange={e => unityContext.send("LevelManager", "ScaleSelectedObjectY", parseFloat(e.target.value))}/>
+                                    <Form.Control name="z" type="text" placeholder="Z" value={itemTransform == null ? null : itemTransform[8].toFixed(3)} onChange={e => unityContext.send("LevelManager", "ScaleSelectedObjectZ", parseFloat(e.target.value))}/>
+                                </Col>
+                            </Row>
+                        </Card.Body>
+                    </Card>
+                    <Card>
+                        <Card.Header>
+                            <ContextAwareToggle eventKey="2">Prefab Properties</ContextAwareToggle>
+                        </Card.Header>
+                        <Accordion.Collapse eventKey="2">
+                            <Card.Body>
+    
+                                Custom Args may go here?
+    
+                            </Card.Body>
+                        </Accordion.Collapse>
+                    </Card>
+                    
+                </Accordion>
+            </>
+    
+        );
+    }
+    return (<>
+    <h4>
+        No Item Selected
+    </h4>
+        <button variant="primary" onClick={handleOpen} style={{ margin: '10%', width: '80%', }}>
+            DEBUG: Launch PopUp
+        </button></>)
+    
 
 
 }
