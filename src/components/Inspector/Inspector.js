@@ -3,36 +3,34 @@ import { Accordion, Form, Card, Row, Col } from "react-bootstrap";
 import GameObjectDetails from "./GameObjectDetails";
 import ContextAwareToggle from "../ContextAwareToggle";
 import PopUp from "../PopUp";
+import InspectorTransform from "./InspectorTransform";
 
 function Inspector({ unityContext ,setPopUpState}) {
 
     const [isItemSelected, setIsItemSelected] = useState(false);
     const [itemName, setItemName] = useState("");
     const [itemID, setItemID] = useState(0);
-    const [itemTransform, setItemTransform] = useState(null);
-    const [InfoArray, setInfoArray] = useState(new Float32Array());
-
-    
-
+    const [itemTransform, setItemTransform] = useState([]);     
 
     useEffect(function () {
-        unityContext.on("ItemInfo", function (itemName, itemID, itemdata) {
-            console.log("recieved 'ItemInfo' From Unity");
-            if (itemName == "" && itemID == 0) {
-                setIsItemSelected(false);
-                return;
+        unityContext.on("ItemInfo", function (itemName, itemID, itemdata) { // Do not register the same .on message twice in another component! It it becomes flakey!
+            console.log("Inspector.js Component received.");                  
+            if (itemName == "" && itemID == 0) { 
+                setIsItemSelected(false)        
+                setItemName("")
+                setItemID("")
+            } else {
+                setIsItemSelected(true)
+                setItemName(itemName)
+                setItemID(itemID)
             }
-            setIsItemSelected(true);
-            setItemName(itemName);
-            setItemID(itemID);
             setItemTransform(itemdata);
-            console.log(itemdata);
         });
     }, []);
-
-
-    function componentDidMount() { }
-    function componentWillUnmount() { }
+  
+    function RefreshData() {
+        unityContext.send("LevelManager", "ReportObjectInfo");
+    }
 
     // SendMethod to trigger Unity WebGL to delete the selected model
     function DeleteItemEvent() {
@@ -40,17 +38,15 @@ function Inspector({ unityContext ,setPopUpState}) {
         console.log("Item Delete Requested");
     }
 
-    function RefreshData() {
-        unityContext.send("LevelManager", "ReportObjectInfo");
-    }
-
     function handleOpen(){
         setPopUpState(true);
     }
 
-    if (isItemSelected) {
-        return (
-            <>
+    
+    return (
+        <>
+            {isItemSelected &&
+           
                 <Accordion defaultActiveKey="">
                     <Card>
                         <Card.Header>Item Inspector</Card.Header>
@@ -64,26 +60,7 @@ function Inspector({ unityContext ,setPopUpState}) {
                     <Card>
                         <Card.Header>Transform</Card.Header>
                         <Card.Body >
-                            <Row>
-                                <Col>
-                                    <Form.Label>Position</Form.Label>
-                                    <Form.Control name="x" type="text" placeholder="X" value={itemTransform == null ? null : itemTransform[0].toFixed(3)} onChange={e => unityContext.send("LevelManager", "MoveSelectedObjectX", parseFloat(e.target.value))}/>
-                                    <Form.Control name="y" type="text" placeholder="Y" value={itemTransform == null ? null : itemTransform[1].toFixed(3)} onChange={e => unityContext.send("LevelManager", "MoveSelectedObjectY", parseFloat(e.target.value))}/>
-                                    <Form.Control name="z" type="text" placeholder="Z" value={itemTransform == null ? null : itemTransform[2].toFixed(3)} onChange={e => unityContext.send("LevelManager", "MoveSelectedObjectZ", parseFloat(e.target.value))}/>
-                                </Col>
-                                <Col>
-                                    <Form.Label>Rotation</Form.Label>
-                                    <Form.Control name="X" type="text" placeholder="X" value={itemTransform == null ? null : itemTransform[3].toFixed(3)} onChange={e => unityContext.send("LevelManager", "RotateSelectedObjectX", parseFloat(e.target.value))}/>
-                                    <Form.Control name="Y" type="text" placeholder="Y" value={itemTransform == null ? null : itemTransform[4].toFixed(3)} onChange={e => unityContext.send("LevelManager", "RotateSelectedObjectY", parseFloat(e.target.value))}/>
-                                    <Form.Control name="Z" type="text" placeholder="Z" value={itemTransform == null ? null : itemTransform[5].toFixed(3)} onChange={e => unityContext.send("LevelManager", "RotateSelectedObjectZ", parseFloat(e.target.value))}/>
-                                </Col>
-                                <Col>
-                                    <Form.Label>Scale</Form.Label>
-                                    <Form.Control name="x" type="text" placeholder="X" value={itemTransform == null ? null : itemTransform[6].toFixed(3)} onChange={e => unityContext.send("LevelManager", "ScaleSelectedObjectX", parseFloat(e.target.value))}/>
-                                    <Form.Control name="y" type="text" placeholder="Y" value={itemTransform == null ? null : itemTransform[7].toFixed(3)} onChange={e => unityContext.send("LevelManager", "ScaleSelectedObjectY", parseFloat(e.target.value))}/>
-                                    <Form.Control name="z" type="text" placeholder="Z" value={itemTransform == null ? null : itemTransform[8].toFixed(3)} onChange={e => unityContext.send("LevelManager", "ScaleSelectedObjectZ", parseFloat(e.target.value))}/>
-                                </Col>
-                            </Row>
+                            <InspectorTransform unityContext={unityContext} transform={itemTransform} />
                         </Card.Body>
                     </Card>
                     <Card>
@@ -92,28 +69,25 @@ function Inspector({ unityContext ,setPopUpState}) {
                         </Card.Header>
                         <Accordion.Collapse eventKey="2">
                             <Card.Body>
-    
+
                                 Custom Args may go here?
-    
+
                             </Card.Body>
                         </Accordion.Collapse>
                     </Card>
                     
                 </Accordion>
-            </>
-    
-        );
-    }
-    return (<>
-    <h4>
-        No Item Selected
-    </h4>
-        <button variant="primary" onClick={handleOpen} style={{ margin: '10%', width: '80%', }}>
-            DEBUG: Launch PopUp
-        </button></>)
-    
-
-
+            }
+            {!isItemSelected  &&
+                 <div>
+                    <h4>No Item Selected</h4>
+                    <button variant="primary" onClick={handleOpen} style={{ margin: '10%', width: '80%', }}>
+                        DEBUG: Launch PopUp
+                    </button>
+                 </div>
+            }   
+        </>
+    );
 }
 
 export default Inspector;
