@@ -28,10 +28,7 @@ function Inspector({ unityContext ,setPopUpState}) {
         });
     }, []);
   
-    function RefreshData() {
-        unityContext.send("LevelManager", "ReportObjectInfo");
-    }
-
+    
     // SendMethod to trigger Unity WebGL to delete the selected model
     function DeleteItemEvent() {
         unityContext.send("LevelManager", "DeleteSelectedItem");
@@ -41,7 +38,6 @@ function Inspector({ unityContext ,setPopUpState}) {
     function handleOpen(){
         setPopUpState(true);
     }
-
     
     return (
         <>
@@ -53,7 +49,6 @@ function Inspector({ unityContext ,setPopUpState}) {
                         <Card.Body>
                             <p>Item Name: {itemName}, {itemID}</p>
                             <button style={{ width: "100%" }} className="btn btn-outline-secondary" onClick={DeleteItemEvent}>Remove Item</button>
-                            <button style={{ width: "100%" }} className="btn btn-outline-secondary" onClick={RefreshData}>RefreshData</button>
                         </Card.Body>
                         
                     </Card>

@@ -85,21 +85,21 @@ function InspectorTransform({ unityContext, transform })  {
             <Row>
                 <Col>
                     <Form.Label>Position</Form.Label>
-                    <Form.Control name="posX" type="text" placeholder="X" value={ posX } onChange={e => handleTextChange(e)} onKeyUp={ e => {if(isFinite(e.key) || e.key === 'Enter' ){ unityContext.send("LevelManager", "MoveSelectedObjectX", parseFloat(posX))}}} />
-                    <Form.Control name="posY" type="text" placeholder="Y" value={ posY } onChange={e => handleTextChange(e)} onKeyUp={ e => {if(isFinite(e.key) || e.key === 'Enter' ){ unityContext.send("LevelManager", "MoveSelectedObjectY", parseFloat(posY))}}} />
-                    <Form.Control name="posZ" type="text" placeholder="Z" value={ posZ } onChange={e => handleTextChange(e)} onKeyUp={ e => {if(isFinite(e.key) || e.key === 'Enter' ){ unityContext.send("LevelManager", "MoveSelectedObjectZ", parseFloat(posZ))}}} />  
+                    <Form.Control name="posX" type="text" placeholder="X" value={ posX } onChange={e => handleTextChange(e)} onKeyUp={ e => {if(isFinite(e.key) || e.key === 'Enter' ){ unityContext.send("LevelManager", "MoveSelectedObjectX", parseFloat(posX))}}} style={{ boxShadow: "none"}}/>
+                    <Form.Control name="posY" type="text" placeholder="Y" value={ posY } onChange={e => handleTextChange(e)} onKeyUp={ e => {if(isFinite(e.key) || e.key === 'Enter' ){ unityContext.send("LevelManager", "MoveSelectedObjectY", parseFloat(posY))}}} style={{ boxShadow: "none"}}/>
+                    <Form.Control name="posZ" type="text" placeholder="Z" value={ posZ } onChange={e => handleTextChange(e)} onKeyUp={ e => {if(isFinite(e.key) || e.key === 'Enter' ){ unityContext.send("LevelManager", "MoveSelectedObjectZ", parseFloat(posZ))}}} style={{ boxShadow: "none"}}/>  
                 </Col>
                 <Col>
                     <Form.Label>Rotation</Form.Label>
-                    <Form.Control name="rotX" type="text" placeholder="X" value={ rotX } onChange={e => handleTextChange(e)} onKeyUp={ e => {if(isFinite(e.key) || e.key === 'Enter' ){ unityContext.send("LevelManager", "RotateSelectedObjectX", parseFloat(rotX))}}} />  
-                    <Form.Control name="rotY" type="text" placeholder="Y" value={ rotY } onChange={e => handleTextChange(e)} onKeyUp={ e => {if(isFinite(e.key) || e.key === 'Enter' ){ unityContext.send("LevelManager", "RotateSelectedObjectY", parseFloat(rotY))}}} />  
-                    <Form.Control name="rotZ" type="text" placeholder="Z" value={ rotZ } onChange={e => handleTextChange(e)} onKeyUp={ e => {if(isFinite(e.key) || e.key === 'Enter' ){ unityContext.send("LevelManager", "RotateSelectedObjectZ", parseFloat(rotZ))}}} />  
+                    <Form.Control name="rotX" type="text" placeholder="X" value={ rotX } onChange={e => handleTextChange(e)} onKeyUp={ e => {if(isFinite(e.key) || e.key === 'Enter' ){ unityContext.send("LevelManager", "RotateSelectedObjectX", parseFloat(rotX))}}} style={{ boxShadow: "none"}}/>  
+                    <Form.Control name="rotY" type="text" placeholder="Y" value={ rotY } onChange={e => handleTextChange(e)} onKeyUp={ e => {if(isFinite(e.key) || e.key === 'Enter' ){ unityContext.send("LevelManager", "RotateSelectedObjectY", parseFloat(rotY))}}} style={{ boxShadow: "none"}}/>  
+                    <Form.Control name="rotZ" type="text" placeholder="Z" value={ rotZ } onChange={e => handleTextChange(e)} onKeyUp={ e => {if(isFinite(e.key) || e.key === 'Enter' ){ unityContext.send("LevelManager", "RotateSelectedObjectZ", parseFloat(rotZ))}}} style={{ boxShadow: "none"}}/>  
                 </Col>
                 <Col>
                     <Form.Label>Scale</Form.Label>
-                    <Form.Control name="scaleX" type="text" placeholder="X" value={ scaleX } onChange={e => handleTextChange(e)} onKeyUp={ e => {if(isFinite(e.key) || e.key === 'Enter' ){ unityContext.send("LevelManager", "ScaleSelectedObjectX", parseFloat(scaleX))}}} />  
-                    <Form.Control name="scaleY" type="text" placeholder="Y" value={ scaleY } onChange={e => handleTextChange(e)} onKeyUp={ e => {if(isFinite(e.key) || e.key === 'Enter' ){ unityContext.send("LevelManager", "ScaleSelectedObjectY", parseFloat(scaleY))}}} />  
-                    <Form.Control name="scaleZ" type="text" placeholder="Z" value={ scaleZ } onChange={e => handleTextChange(e)} onKeyUp={ e => {if(isFinite(e.key) || e.key === 'Enter' ){ unityContext.send("LevelManager", "ScaleSelectedObjectZ", parseFloat(scaleZ))}}} />  
+                    <Form.Control name="scaleX" type="text" placeholder="X" value={ scaleX } onChange={e => handleTextChange(e)} onKeyUp={ e => {if(isFinite(e.key) || e.key === 'Enter' ){ unityContext.send("LevelManager", "ScaleSelectedObjectX", parseFloat(scaleX))}}} style={{ boxShadow: "none"}}/>  
+                    <Form.Control name="scaleY" type="text" placeholder="Y" value={ scaleY } onChange={e => handleTextChange(e)} onKeyUp={ e => {if(isFinite(e.key) || e.key === 'Enter' ){ unityContext.send("LevelManager", "ScaleSelectedObjectY", parseFloat(scaleY))}}} style={{ boxShadow: "none"}}/>  
+                    <Form.Control name="scaleZ" type="text" placeholder="Z" value={ scaleZ } onChange={e => handleTextChange(e)} onKeyUp={ e => {if(isFinite(e.key) || e.key === 'Enter' ){ unityContext.send("LevelManager", "ScaleSelectedObjectZ", parseFloat(scaleZ))}}} style={{ boxShadow: "none"}}/>  
                 </Col>
             </Row>
         </>

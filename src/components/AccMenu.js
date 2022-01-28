@@ -7,7 +7,7 @@ import Items from "./Items";
 import Prefab from "./Prefab";
 import { IdbContext } from "../App";
 import ContextAwareToggle from "./ContextAwareToggle";
-
+import SkyboxSelecter from "./SkyboxSelecter";
 
 
 function AccMenu({ unityContext }) {
@@ -16,6 +16,7 @@ function AccMenu({ unityContext }) {
     const context = useContext(IdbContext)
 
 	useEffect(() =>{
+        // Get filenames from server For the File listing Tab
 		const getFileNames = async () =>{
 			const fileNamesFromServer = await getFileListFromServer();
             if(fileNamesFromServer !== ""){
@@ -38,13 +39,14 @@ function AccMenu({ unityContext }) {
 		return fileListString
 	}
 
-
     function addFile(addedFile){
         console.log("AddFile " + addedFile)
 
         fileNames.indexOf(addedFile) > -1 ? alert('Existing file updated.') :
         setFileNames(fileNames => [...fileNames, addedFile]) // only manipulate state (View) if file does not exist
     }
+
+
 
 
     return (
@@ -74,32 +76,8 @@ function AccMenu({ unityContext }) {
                                 </svg>
                             </Col>
                             <Col style={{ paddingLeft: "0", display: "block" }}>
-                                <Dropdown>
-                                    <Dropdown.Toggle className="border text-reset" id="dropdown-basic" style={{ background: "white", textDecorationColor: "black", boxShadow: "none",  height: "25px" , marginTop: "0rem", paddingTop: "0px", width:"100%" }}>
-                                        Select Skybox
-                                    </Dropdown.Toggle>
-
-                                    <Dropdown.Menu >
-                                         <Dropdown.Item>Default</Dropdown.Item>
-                                        <Dropdown.Item>Sky1</Dropdown.Item>
-                                        <Dropdown.Item>Sky2</Dropdown.Item>
-                                        <Dropdown.Item>Sky3</Dropdown.Item>
-                                        <Dropdown.Item>Sky4</Dropdown.Item>
-                                        <Dropdown.Item>Sky5</Dropdown.Item>
-                                        <Dropdown.Item>Sky6</Dropdown.Item>
-                                        <Dropdown.Item>Sky7</Dropdown.Item>
-                                        <Dropdown.Item>Sky8</Dropdown.Item>
-                                        <Dropdown.Item>Sky9</Dropdown.Item>
-                                        <Dropdown.Item>Sky10</Dropdown.Item>
-                                        <Dropdown.Item>Sky11</Dropdown.Item>
-                                        <Dropdown.Item>Sky12</Dropdown.Item>
-                                        <Dropdown.Item>Sky13</Dropdown.Item>
-                                        <Dropdown.Item>Sky14</Dropdown.Item>
-                                       
-                                    </Dropdown.Menu>
-                                </Dropdown>
-                            </Col>
-                           
+                                 <SkyboxSelecter unityContext={unityContext} />
+                            </Col>   
                         </Row>
 
 

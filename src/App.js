@@ -32,7 +32,7 @@ function App() {
 	
 	
 	const setWebGLKeyboardCapture = (e) => {
-		console.log(e.target.id)
+		//console.log(e.target.id)
 		if(e.target.id === "unity-canvas-1"){
 			unityContext.send("LevelManager", "SetKeyboardCapture", "1")	
 		} else {
