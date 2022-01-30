@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.LoadingScreen {
+  z-index: 99;
+  background-color: rgb(214, 214, 214);
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+}

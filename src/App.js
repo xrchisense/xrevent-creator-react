@@ -7,6 +7,7 @@ import MainNav from "./components/MainNav"
 import { Stack } from "react-bootstrap";
 import Inspector from "./components/Inspector/Inspector";
 import PopUp from "./components/PopUp";
+import LoadingScreen from "./components/LoadingScreen";
 
 const unityContext = new UnityContext({
 	loaderUrl: process.env.PUBLIC_URL + "/appweb/Build/appweb.loader.js",
@@ -20,6 +21,7 @@ export const IdbContext = React.createContext(); // ToDo: Shift the Context to a
 function App() {
 	const [currentRoomId, setCurrentRoomId] = useState("");
 	const [showPopUp,setPopUpState] = useState(false);
+	const [showLoadingScreen,setLoadingScreenState] = useState(false);
 
 	//prevent middle MouseClick:
 	document.body.onmousedown = function(e) { if (e.button === 1) return false; }
@@ -43,6 +45,7 @@ function App() {
 	return (
 		<>
 			<PopUp unityContext = {unityContext} showPopUpState={showPopUp} setShowPopUpState={setPopUpState}/>
+			<LoadingScreen unityContext={unityContext}/>
 			<IdbContext.Provider value={{currentRoomId, setCurrentRoomId}}>
 				<TopNav unityContext={unityContext}/>
 			</IdbContext.Provider>
