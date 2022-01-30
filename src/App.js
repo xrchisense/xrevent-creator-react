@@ -9,10 +9,10 @@ import Inspector from "./components/Inspector/Inspector";
 import PopUp from "./components/PopUp";
 
 const unityContext = new UnityContext({
-	loaderUrl: "appweb/Build/appweb.loader.js",
-	dataUrl: "appweb/Build/appweb.data",
-	frameworkUrl: "appweb/Build/appweb.framework.js",
-	codeUrl: "appweb/Build/appweb.wasm",
+	loaderUrl: process.env.PUBLIC_URL + "/appweb/Build/appweb.loader.js",
+	dataUrl: process.env.PUBLIC_URL + "/appweb/Build/appweb.data",
+	frameworkUrl: process.env.PUBLIC_URL + "/appweb/Build/appweb.framework.js",
+	codeUrl: process.env.PUBLIC_URL + "/appweb/Build/appweb.wasm",
 });
 
 export const IdbContext = React.createContext(); // ToDo: Shift the Context to a seperate provider.js
