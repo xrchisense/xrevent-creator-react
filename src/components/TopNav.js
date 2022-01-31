@@ -25,6 +25,7 @@ const TopNav = ({unityContext}) => {
 	const handleFocus = (event) => {
 		event.target.select();
 	}
+	
 	// Used to change the value in the text input field
 	function handleTextChange(value){
 		//setCurrentRoomId(value)
