@@ -142,7 +142,8 @@ function AccMenu({ unityContext }) {
                             <Prefab type="VideoWall" unityContext={unityContext}></Prefab>
                             <Prefab type="Entrance" unityContext={unityContext}></Prefab>
                             <Prefab type="Exit to Lobby" unityContext={unityContext}></Prefab>
-                           
+                            <Prefab type="RoomChangeTriggerBase" unityContext={unityContext}></Prefab>
+                            <Prefab type="TeleportPosition" unityContext={unityContext}></Prefab>
                        </Row>
                     </Card.Body>
                 </Accordion.Collapse>
