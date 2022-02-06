@@ -134,13 +134,15 @@ function AccMenu({ unityContext }) {
                     <Card.Body >
                         <Row>
                             
-                            <Prefab type="Cube" unityContext={unityContext}></Prefab>
-                            <Prefab type="Sphere" unityContext={unityContext}></Prefab>
                             <Prefab type="Point Light" unityContext={unityContext}></Prefab>
                             <Prefab type="Directional Light" unityContext={unityContext}></Prefab>
+                            <Prefab type="Cube" unityContext={unityContext}></Prefab>
+                            <Prefab type="Sphere" unityContext={unityContext}></Prefab>
                             <Prefab type="Plane" unityContext={unityContext}></Prefab>
-                            <Prefab type="Entrance" unityContext={unityContext}></Prefab>
                             <Prefab type="VideoWall" unityContext={unityContext}></Prefab>
+                            <Prefab type="Entrance" unityContext={unityContext}></Prefab>
+                            <Prefab type="Exit to Lobby" unityContext={unityContext}></Prefab>
+                           
                        </Row>
                     </Card.Body>
                 </Accordion.Collapse>
