@@ -13,6 +13,9 @@ const unityContext = new UnityContext({
 	dataUrl:  "appweb/Build/appweb.data",
 	frameworkUrl: "appweb/Build/appweb.framework.js",
 	codeUrl:  "appweb/Build/appweb.wasm",
+	webglContextAttributes: {
+		preserveDrawingBuffer: true,
+	},
 });
 
 export const IdbContext = React.createContext(); // ToDo: Shift the Context to a seperate provider.js

@@ -9,6 +9,7 @@ import Prefab from "./Prefab";
 import { IdbContext } from "../App";
 import ContextAwareToggle from "./ContextAwareToggle";
 import SkyboxSelecter from "./SkyboxSelecter";
+import { UnityContext } from "react-unity-webgl";
 
 
 function AccMenu({ unityContext }) {

@@ -46,8 +46,35 @@ const TopNav = ({unityContext}) => {
 
 	function requestSaveRoom(){
 		unityContext.send("LevelManager", "SaveRoom", "");
+		// Create an preview Image
+		const imgData = unityContext.takeScreenshot("image/jpeg", 1.0);
+		if(imgData !== null){
+			uploadPreviewImageData(imgData)
+			//window.open(imgData, "_blank");
+		}
 	}
 	
+	async function uploadPreviewImageData(data)  {
+        
+        let formData = new FormData();
+        formData.append("file", data) 
+        formData.append("folder", currentRoomId )
+        
+        //setLoadingIsShown(true)         // Change Upload Icon to loading icon
+
+        const result = await fetch('/uploadPreviewImage.php' , {
+            method: "POST",
+            body: formData
+        })
+        
+        //setLoadingIsShown(false)        // Change Icon to upload icon
+        
+        //ToDo: Some error handling needs to be here
+        await console.log(result)
+        //await alert('The file has been uploaded successfully.')        
+    }
+
+
 
 	return (
 		<>
