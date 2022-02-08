@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Accordion, Form, Card, Row, Col, Image } from "react-bootstrap";
+import { Accordion, Form, Card, Row, Col, Image, Carousel } from "react-bootstrap";
 import GameObjectDetails from "./GameObjectDetails";
 import ContextAwareToggle from "../ContextAwareToggle";
 import PopUp from "../PopUp";
@@ -98,10 +98,58 @@ function Inspector({ unityContext ,setPopUpState}) {
                     </Card.Body>
                     </Card>
 
-
+                    {/*
                     <button variant="primary" onClick={handleOpen} style={{ margin: '10%', width: '80%', }}>
                         DEBUG: Launch PopUp
                     </button>
+                    */}
+                    
+
+                    <Card style={{ width: '277px' }}>
+                    <Card.Body>
+                        <Card.Title>Funded & Sponsored by</Card.Title>
+                        <Card.Subtitle className="mb-2 text-muted"></Card.Subtitle>
+                        <Card.Text style={{fontSize: '10pt', height: "100px"}}>
+
+                            <Carousel indicators={false} controls={false} style={{ marginTop: "20px"}}>
+                            <Carousel.Item>
+                                <img
+                                className="d-block"
+                                src="res/logos/BMBF_logo.svg"
+                                alt="BMBF Logo"
+                                />
+                            </Carousel.Item>
+                            <Carousel.Item>
+                                <img
+                                className="d-block w-100"
+                                src="res/logos/Open_Knowledge_Foundation_Deutschland_Logo.svg"
+                                alt="OKF Logo"
+                                />
+
+                            </Carousel.Item>
+                            <Carousel.Item>
+                                <img
+                                className="d-block "
+                                src="res/logos/Prototype2_logo.svg"
+                                alt="Prototype Fund Logo"
+                                />
+
+                            </Carousel.Item>
+                            <Carousel.Item>
+                                <img
+                                className="d-block w-100"
+                                src="res/logos/haw-hamburg_logo.svg"
+                                alt="HAW Hamburg Logo"
+                                /> 
+                            </Carousel.Item>
+                            </Carousel>
+                            
+                        </Card.Text>
+                    </Card.Body>
+                    </Card>
+
+                    
+
                  </div>
             }   
         </>
