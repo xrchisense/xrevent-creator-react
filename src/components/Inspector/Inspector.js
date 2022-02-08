@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Accordion, Form, Card, Row, Col } from "react-bootstrap";
+import { Accordion, Form, Card, Row, Col, Image } from "react-bootstrap";
 import GameObjectDetails from "./GameObjectDetails";
 import ContextAwareToggle from "../ContextAwareToggle";
 import PopUp from "../PopUp";
@@ -47,10 +47,17 @@ function Inspector({ unityContext ,setPopUpState}) {
                     <Card>
                         <Card.Header>Item Inspector</Card.Header>
                         <Card.Body>
-                            <p>Item Name: {itemName}, {itemID}</p>
+                            <Row>
+                                <Col style={{fontWeight: "lighter"}}>Item Name</Col>
+                            </Row>
+                            <Row> 
+                                <Col className="text-truncate" style={{ display: "block" }}>
+                                {itemName}, {itemID}
+                                </Col>
+                            </Row>                            
                             <button style={{ width: "100%" }} className="btn btn-outline-secondary" onClick={DeleteItemEvent}>Remove Item</button>
-                        </Card.Body>
                         
+                        </Card.Body>  
                     </Card>
                     <Card>
                         <Card.Header>Transform</Card.Header>
@@ -75,7 +82,18 @@ function Inspector({ unityContext ,setPopUpState}) {
             }
             {!isItemSelected  &&
                  <div>
-                    <h4>No Item Selected</h4>
+                    <Card style={{ width: '277px' }}>
+                    <Card.Body>
+                        <Card.Title>Controls</Card.Title>
+                        <Card.Subtitle className="mb-2 text-muted">XRevent Creator</Card.Subtitle>
+                        <Card.Text style={{fontSize: '10pt'}}>
+                            <Image src="res/icons/Rotate.png"/> 
+                            <Image src="res/icons/Translate.png"/> 
+                        </Card.Text>
+                    </Card.Body>
+                    </Card>
+
+
                     <button variant="primary" onClick={handleOpen} style={{ margin: '10%', width: '80%', }}>
                         DEBUG: Launch PopUp
                     </button>

@@ -42,7 +42,7 @@ function requestLoadRoom(id){
                 <Card.Body>
                     <Card.Title>DJ Room</Card.Title>
                     <Card.Text style={{fontSize: '10pt'}}>
-                        This is one of our first rooms created in Blender and composed is this editor.
+                        This is one of our first rooms created in Blender and composed by using this WebGL editor.
                     </Card.Text>
                     
                 </Card.Body>
@@ -51,9 +51,9 @@ function requestLoadRoom(id){
             <Card style={{ width: '260px' }}>
                 <Card.Img variant="top" src="/upload/15e6ec8e-7b78-4dfa-96ed-a345cf2e3247/preview.jpg" type="button" onClick={() => requestLoadRoom("15e6ec8e-7b78-4dfa-96ed-a345cf2e3247")}/>
                 <Card.Body>
-                    <Card.Title>DJ Room</Card.Title>
+                    <Card.Title>Room A</Card.Title>
                     <Card.Text style={{fontSize: '10pt'}}>
-                        This is one of our first rooms created in Blender and composed is this editor.
+                        We have prepared these six rooms for you to edit. Feel free to modify them.
                     </Card.Text>
                     
                 </Card.Body>
@@ -62,9 +62,10 @@ function requestLoadRoom(id){
             <Card style={{ width: '260px' }}>
                 <Card.Img variant="top" src="/upload/1f20992f-acba-4074-8e4c-7868afaccbc6/preview.jpg" type="button" onClick={() => requestLoadRoom("1f20992f-acba-4074-8e4c-7868afaccbc6")}/>
                 <Card.Body>
-                    <Card.Title>DJ Room</Card.Title>
+                    <Card.Title>Room B</Card.Title>
                     <Card.Text style={{fontSize: '10pt'}}>
-                        This is one of our first rooms created in Blender and composed is this editor.
+                        After modyfying a room, you can directly review them in the client app, which is available for Oculus Quest, Windowsn and Mac.
+                        Follow the download link at the top.
                     </Card.Text>
                     
                 </Card.Body>
@@ -73,7 +74,7 @@ function requestLoadRoom(id){
             <Card style={{ width: '260px' }}>
                 <Card.Img variant="top" src="/upload/1a03ac6b-d6b5-4c2d-9f1a-c80068311396/preview.jpg" type="button" onClick={() => requestLoadRoom("1a03ac6b-d6b5-4c2d-9f1a-c80068311396")}/>
                 <Card.Body>
-                    <Card.Title>DJ Room</Card.Title>
+                    <Card.Title>Room C</Card.Title>
                     <Card.Text style={{fontSize: '10pt'}}>
                         This is one of our first rooms created in Blender and composed is this editor.
                     </Card.Text>
@@ -84,7 +85,7 @@ function requestLoadRoom(id){
             <Card style={{ width: '260px' }}>
                 <Card.Img variant="top" src="/upload/37afe154-6f83-47ba-b63e-f8192af25e87/preview.jpg" type="button" onClick={() => requestLoadRoom("37afe154-6f83-47ba-b63e-f8192af25e87")}/>
                 <Card.Body>
-                    <Card.Title>DJ Room</Card.Title>
+                    <Card.Title>Room D</Card.Title>
                     <Card.Text style={{fontSize: '10pt'}}>
                         This is one of our first rooms created in Blender and composed is this editor.
                     </Card.Text>
@@ -95,7 +96,7 @@ function requestLoadRoom(id){
             <Card style={{ width: '260px' }}>
                 <Card.Img variant="top" src="/upload/0f8fad5b-d9cb-469f-a165-70867728950e/preview.jpg" type="button" onClick={() => requestLoadRoom("0f8fad5b-d9cb-469f-a165-70867728950e")}/>
                 <Card.Body>
-                    <Card.Title>DJ Room</Card.Title>
+                    <Card.Title>Room E</Card.Title>
                     <Card.Text style={{fontSize: '10pt'}}>
                         This is one of our first rooms created in Blender and composed is this editor.
                     </Card.Text>
