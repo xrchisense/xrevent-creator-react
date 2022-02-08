@@ -54,9 +54,14 @@ function Inspector({ unityContext ,setPopUpState}) {
                                 <Col className="text-truncate" style={{ display: "block" }}>
                                 {itemName}, {itemID}
                                 </Col>
-                            </Row>                            
-                            <button style={{ width: "100%" }} className="btn btn-outline-secondary" onClick={DeleteItemEvent}>Remove Item</button>
-                        
+                            </Row>  
+                            <Row>
+                                <Col>  
+                                      
+                                    <button style={{ marginTop: "10px", width: "100%" }} className="btn btn-outline-secondary" onClick={DeleteItemEvent}>Remove Item</button>
+                                   
+                                </Col>    
+                            </Row>  
                         </Card.Body>  
                     </Card>
                     <Card>
