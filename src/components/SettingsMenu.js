@@ -49,7 +49,7 @@ function requestLoadRoom(id){
             </Card>
 
             <Card style={{ width: '260px' }}>
-                <Card.Img variant="top" src="/upload/15e6ec8e-7b78-4dfa-96ed-a345cf2e3247/preview.jpg" type="button" onClick={() => requestLoadRoom("15e6ec8e-7b78-4dfa-96ed-a345cf2e3247")}/>
+                <Card.Img variant="top" src="/upload/1a03ac6b-d6b5-4c2d-9f1a-c80068311396/preview.jpg" type="button" onClick={() => requestLoadRoom("1a03ac6b-d6b5-4c2d-9f1a-c80068311396")}/>
                 <Card.Body>
                     <Card.Title>Room A</Card.Title>
                     <Card.Text style={{fontSize: '10pt'}}>
@@ -71,8 +71,8 @@ function requestLoadRoom(id){
                 </Card.Body>
             </Card>
 
-            <Card style={{ width: '260px' }}>
-                <Card.Img variant="top" src="/upload/1a03ac6b-d6b5-4c2d-9f1a-c80068311396/preview.jpg" type="button" onClick={() => requestLoadRoom("1a03ac6b-d6b5-4c2d-9f1a-c80068311396")}/>
+            <Card style={{ width: '260px' }}> 
+                <Card.Img variant="top" src="/upload/37afe154-6f83-47ba-b63e-f8192af25e87/preview.jpg" type="button" onClick={() => requestLoadRoom("37afe154-6f83-47ba-b63e-f8192af25e87")}/>
                 <Card.Body>
                     <Card.Title>Room C</Card.Title>
                     <Card.Text style={{fontSize: '10pt'}}>
@@ -83,7 +83,7 @@ function requestLoadRoom(id){
             </Card>
 
             <Card style={{ width: '260px' }}>
-                <Card.Img variant="top" src="/upload/37afe154-6f83-47ba-b63e-f8192af25e87/preview.jpg" type="button" onClick={() => requestLoadRoom("37afe154-6f83-47ba-b63e-f8192af25e87")}/>
+                <Card.Img variant="top" src="/upload/15e6ec8e-7b78-4dfa-96ed-a345cf2e3247/preview.jpg" type="button" onClick={() => requestLoadRoom("15e6ec8e-7b78-4dfa-96ed-a345cf2e3247")}/>
                 <Card.Body>
                     <Card.Title>Room D</Card.Title>
                     <Card.Text style={{fontSize: '10pt'}}>

@@ -83,7 +83,7 @@ const MainNav = ({ unityContext }) => {
                     {composeIsShown && <AccMenu unityContext={unityContext} />}
                     {settingsIsShown && <SettingsMenu unityContext = {unityContext} />}
                     {pretixIsShown && <PretixMenu  />}
-                    {launchIsShown && <LaunchMenu  />}
+                    {launchIsShown && <LaunchMenu  unityContext = {unityContext}/>}
                 </div>
 
             </Stack>
