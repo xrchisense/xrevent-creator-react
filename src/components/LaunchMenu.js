@@ -16,9 +16,9 @@ function LaunchMenu({unityContext}){
         setRadioValue(value)
         
         if(value === '1'){
-            unityContext.send("LevelManager", "SetGridVisibilty", 1);
+            unityContext.send("LevelManager", "SetGridVisibilty", "true");
         } else if (value === '2'){
-            unityContext.send("LevelManager", "SetGridVisibilty", 0);
+            unityContext.send("LevelManager", "SetGridVisibilty", "false");
         }
     }
 
