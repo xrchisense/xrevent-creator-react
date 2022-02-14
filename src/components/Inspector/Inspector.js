@@ -11,7 +11,8 @@ function Inspector({ unityContext ,setPopUpState}) {
     const [isItemSelected, setIsItemSelected] = useState(false);
     const [itemName, setItemName] = useState("");
     const [itemID, setItemID] = useState(0);
-    const [itemTransform, setItemTransform] = useState([]);     
+    const [itemTransform, setItemTransform] = useState([]);
+    const [itemCustomArgs, setItemCustomArgs] = useState("");
 
 
     useEffect(function () {
@@ -27,10 +28,19 @@ function Inspector({ unityContext ,setPopUpState}) {
                 setItemID(itemID)
             }
             setItemTransform(itemdata);
+            setItemCustomArgs("");
         });
         
 
     }, []);
+
+    useEffect(function() {
+        unityContext.on("ItemInfoCustomArgs", function (customArgList){
+            setItemCustomArgs(customArgList);
+        });
+    }, []);
+        
+    
   
     
     // SendMethod to trigger Unity WebGL to delete the selected model
