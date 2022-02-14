@@ -34,9 +34,11 @@ const TopNav = ({unityContext}) => {
 
 	// Unity request functions
 	function requestLoadRoom(){
-		setCurrentRoomId(textField)
-		console.log("Requesting to load room: " + textField);
-		unityContext.send("LevelManager", "loadRoom", textField); //currentRoomId ??? 
+		// Strip Spaces away
+		var strId = textField.replace(/\s+/g, '');
+		setCurrentRoomId(strId)
+		console.log("Requesting to load room: " + strId);
+		unityContext.send("LevelManager", "loadRoom", strId); //currentRoomId ??? 
 	}
 
 	function requestNewRoom(){

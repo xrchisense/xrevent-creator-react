@@ -4,6 +4,7 @@ import GameObjectDetails from "./GameObjectDetails";
 import ContextAwareToggle from "../ContextAwareToggle";
 import PopUp from "../PopUp";
 import InspectorTransform from "./InspectorTransform";
+import InspectorPrefab from "./InspectorPrefab";
 
 function Inspector({ unityContext ,setPopUpState}) {
 
@@ -12,8 +13,9 @@ function Inspector({ unityContext ,setPopUpState}) {
     const [itemID, setItemID] = useState(0);
     const [itemTransform, setItemTransform] = useState([]);     
 
+
     useEffect(function () {
-        unityContext.on("ItemInfo", function (itemName, itemID, itemdata) { // Do not register the same .on message twice in another component! It it becomes flakey!
+        unityContext.on("ItemInfo", function (itemName, itemID, itemdata) { // Do NOT register the same .on message twice in another component! It it becomes flakey!
             console.log("Inspector.js Component received.");                  
             if (itemName == "" && itemID == 0) { 
                 setIsItemSelected(false)        
@@ -26,6 +28,8 @@ function Inspector({ unityContext ,setPopUpState}) {
             }
             setItemTransform(itemdata);
         });
+        
+
     }, []);
   
     
@@ -52,7 +56,7 @@ function Inspector({ unityContext ,setPopUpState}) {
                             </Row>
                             <Row> 
                                 <Col className="text-truncate" style={{ display: "block" }}>
-                                {itemName}, {itemID}
+                                {itemName}
                                 </Col>
                             </Row>  
                             <Row>
@@ -76,9 +80,7 @@ function Inspector({ unityContext ,setPopUpState}) {
                         </Card.Header>
                         <Accordion.Collapse eventKey="2">
                             <Card.Body>
-
-                                Custom Args may go here?
-
+                                <InspectorPrefab unityContext={unityContext} />
                             </Card.Body>
                         </Accordion.Collapse>
                     </Card>

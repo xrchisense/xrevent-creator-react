@@ -16,7 +16,6 @@ export default function DefaultItem({ itemName, unityContext}) {
     }
     
     async function doDelete(){
-        setRowIsShown(false)
         console.log(itemName);
         unityContext.send("LevelManager", "CustomItemDeletedFromServer", itemName)
         const response = await fetch('/delete.php?filepath=' + context.currentRoomId + '/items/' + itemName);
