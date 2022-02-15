@@ -104,6 +104,7 @@ function Inspector({ unityContext ,setPopUpState}) {
                         <Card.Title>Controls</Card.Title>
                         <Card.Subtitle className="mb-2 text-muted">XRevent Creator</Card.Subtitle>
                         <Card.Text style={{fontSize: '10pt'}}>
+                            <Image src="res/icons/Zoom.png"/>
                             <Image src="res/icons/Rotate.png"/> 
                             <Image src="res/icons/Translate.png"/> 
                         </Card.Text>

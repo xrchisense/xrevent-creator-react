@@ -16,7 +16,6 @@ function InspectorPrefab({ unityContext })  {
             const kvPairArray =  responseString.split(";");
             
             kvPairArray.forEach(element => {
-                console.log(element)
                 const kvItem = element.split(",");
                 
                 setPrefabData(prefabData => ({...prefabData, [kvItem[0]]: kvItem[1]}))
@@ -27,13 +26,16 @@ function InspectorPrefab({ unityContext })  {
     }, []);
 
 
-
-
-
     function handleTextChange(event){
-        console.log(event.target.name)
-        
+        setPrefabData(prefabData => ({...prefabData, [event.target.name]: event.target.value}))
     }
+
+
+    function handleSubmit(event){        
+        const kvPairString = event.target.name + "," + event.target.value 
+        unityContext.send("LevelManager", "ChangeCustomArg", kvPairString)
+    }
+
 
   
     // Selects all in the text input field for easy copy and paste
@@ -49,7 +51,7 @@ function InspectorPrefab({ unityContext })  {
                     <Form.Label>{item[0]}</Form.Label>
                 </Col>
                 <Col  style={{ paddingLeft: "0", display: "block" }}>
-                    <Form.Control name={item[0]} size="sm" type="text" placeholder="[value]" value={item[1]} onFocus={handleFocus} onChange={e => handleTextChange(e)} style={{ boxShadow: "none"}}/>
+                    <Form.Control name={item[0]} size="sm" type="text" placeholder="[value]" value={item[1]} onFocus={handleFocus} onChange={e => handleTextChange(e)} onKeyUp={ e => {if( e.key === 'Enter' ){ handleSubmit(e) }}} style={{ boxShadow: "none"}}/>
                 </Col>
             </Row>
          ))}
