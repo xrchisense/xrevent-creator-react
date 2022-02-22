@@ -1,20 +1,22 @@
 import React from 'react';
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+
 
 function LoadingScreen({ unityContext }) {
 
     const [LoadingStatusText, setLoadingStatusText] = useState("Loading");
     const [progression, setProgression] = useState(0);
     const [showLoadingScreen, setShowLoadingScreen] = useState(true);
-
+    const [opacity, setOpacity] = useState(1);
     
-
+    
     useEffect(function () {
         unityContext.on("progress", function (progress) {
             setProgression(progress);
             
             if (progress >= 1) {
-                setShowLoadingScreen(false);
+                setTimeout(() => setOpacity(0), 2700);
+                setTimeout(() => setShowLoadingScreen(false), 3400);
             }
         });
     }, []);
@@ -25,7 +27,7 @@ function LoadingScreen({ unityContext }) {
         <>
             {showLoadingScreen &&
             <>
-                <div className = "LoadingScreen">
+                <div className = "LoadingScreen" style={{transition: `opacity 700ms ease-in-out`, opacity: opacity}}>
                
                     <div class="circle">
                         <svg id="Icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 2000">
