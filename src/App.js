@@ -7,6 +7,7 @@ import MainNav from "./components/MainNav"
 import { Stack } from "react-bootstrap";
 import Inspector from "./components/Inspector/Inspector";
 import PopUp from "./components/PopUp";
+import LoadingScreen from "./components/LoadingScreen";
 
 const unityContext = new UnityContext({
 	loaderUrl:  "appweb/Build/appweb.loader.js",
@@ -46,6 +47,9 @@ function App() {
 	return (
 		<>
 			<PopUp unityContext = {unityContext} showPopUpState={showPopUp} setShowPopUpState={setPopUpState}/>
+
+			<LoadingScreen unityContext={unityContext}/>
+
 			<IdbContext.Provider value={{currentRoomId, setCurrentRoomId}}>
 				<TopNav unityContext={unityContext}/>
 			</IdbContext.Provider>

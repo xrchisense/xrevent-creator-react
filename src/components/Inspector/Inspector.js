@@ -122,7 +122,7 @@ function Inspector({ unityContext ,setPopUpState}) {
                     <Card.Body>
                         <Card.Title>Funded & Sponsored by</Card.Title>
                         <Card.Subtitle className="mb-2 text-muted"></Card.Subtitle>
-                        <Card.Text style={{fontSize: '10pt', height: "100px"}}>
+                        <Card.Text style={{fontSize: '10pt', height: "125px", overflow: "hidden"}}>
 
                             <Carousel indicators={false} controls={false} style={{ marginTop: "20px"}}>
                             <Carousel.Item>
@@ -150,7 +150,7 @@ function Inspector({ unityContext ,setPopUpState}) {
                             </Carousel.Item>
                             <Carousel.Item>
                                 <img
-                                className="d-block w-100"
+                                className="d-block"
                                 src="res/logos/haw-hamburg_logo.svg"
                                 alt="HAW Hamburg Logo"
                                 /> 

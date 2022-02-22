@@ -53,7 +53,7 @@ function requestLoadRoom(id){
                 <Card.Body>
                     <Card.Title>Room A</Card.Title>
                     <Card.Text style={{fontSize: '10pt'}}>
-                        We have prepared these six rooms for you to edit. Feel free to modify them.
+                        We have prepared these six rooms for you to edit. Feel free to modify them. Keep in mind that this column will not be part of the XRevent Creator, as it is just here for the DemoWeek.
                     </Card.Text>
                     
                 </Card.Body>
@@ -64,7 +64,7 @@ function requestLoadRoom(id){
                 <Card.Body>
                     <Card.Title>Room B</Card.Title>
                     <Card.Text style={{fontSize: '10pt'}}>
-                        After modyfying a room, you can directly review them in the client app, which is available for Oculus Quest, Windowsn and Mac.
+                        After modyfying a room, you can directly review it in the client app, which is available for Oculus Quest, Windows and Mac.
                         Follow the download link at the top.
                     </Card.Text>
                     
@@ -76,7 +76,7 @@ function requestLoadRoom(id){
                 <Card.Body>
                     <Card.Title>Room C</Card.Title>
                     <Card.Text style={{fontSize: '10pt'}}>
-                        This is one of our first rooms created in Blender and composed is this editor.
+                        The Prefab Items will primarily be extended with Assets, which will connect Real Events with the VR worlds.
                     </Card.Text>
                     
                 </Card.Body>
@@ -87,7 +87,7 @@ function requestLoadRoom(id){
                 <Card.Body>
                     <Card.Title>Room D</Card.Title>
                     <Card.Text style={{fontSize: '10pt'}}>
-                        This is one of our first rooms created in Blender and composed is this editor.
+                        Currently there is only the Video Wall for cross reality content delivery. It can stream video content from your event.
                     </Card.Text>
                     
                 </Card.Body>
@@ -98,7 +98,7 @@ function requestLoadRoom(id){
                 <Card.Body>
                     <Card.Title>Room E</Card.Title>
                     <Card.Text style={{fontSize: '10pt'}}>
-                        This is one of our first rooms created in Blender and composed is this editor.
+                        Other xross reality prefabs, will be added soon. For example, DMX resp. Artnet controlled AV equipment.
                     </Card.Text>
                     
                 </Card.Body>
