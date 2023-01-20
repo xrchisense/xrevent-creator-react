@@ -1,5 +1,7 @@
 # xrevent-creator-react
-Frontend web application written in React (JavaScript) for the XRevent-creator.
+Frontend web-application written in React (JavaScript) for the [XRevent-creator](http://xrevent-creator.de).
+
+A user guide for the XRevent-Creator is available at https://xrchisense.de/wp/community/
 
 # Info
 Please switch either to the develop or the production branch. The main branch is intended to stay empty.
