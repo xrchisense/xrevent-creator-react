@@ -7,7 +7,7 @@ Please switch either to the develop or the production branch. The main branch is
 # Acknowledgement
 Prototype Fund<br/>
 Open Knowledge Foundation<br/>
-Bundesministerium für Bildung ud Forschung<br/>
+Bundesministerium für Bildung und Forschung<br/>
 HAW Hamburg<br/>
 Anke von der Heide<br/>
 Tom Milter<br/>
